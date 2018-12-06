@@ -2,28 +2,29 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 13,
+   "execution_count": 1,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "-4 == -100\n",
-      "-3 == -011\n",
-      "-2 == -010\n",
-      "-1 == -001\n",
-      "+0 == +000\n",
-      "+1 == +001\n",
-      "+2 == +010\n",
-      "+3 == +011\n",
-      "+4 == +100\n"
+      "-4 == -100 and is negative\n",
+      "-3 == -011 and is negative\n",
+      "-2 == -010 and is negative\n",
+      "-1 == -001 and is negative\n",
+      "+0 == +000 and is positive\n",
+      "+1 == +001 and is positive\n",
+      "+2 == +010 and is positive\n",
+      "+3 == +011 and is positive\n",
+      "+4 == +100 and is positive\n"
      ]
     }
    ],
    "source": [
     "for x in range(-4, 5):\n",
-    "    print('{:+} == {:+04b}'.format(x, x))"
+    "    sign = \"negative\" if ((x >> 31) & 1) else \"positive\"\n",
+    "    print('{:+} == {:+04b} and is {}'.format(x, x, sign))"
    ]
   }
  ],
