@@ -19,7 +19,7 @@ void printBits(size_t const size, void const * const ptr)
 }
 
 
-int main(int argv, char* argc[])
+int main(void)
 {
     int x = -4;
     printBits(sizeof(x), &x);
