@@ -1,0 +1,12 @@
+(define (square x) (* x x ))
+
+(define (sum_of_squares x y)
+  (+ (square x)
+     (square y)))
+
+(define (sum_of_largest_squares x y z)
+  (cond (((> x y) and (> y z)) (sum_of_squares x y))
+	(((> x y) and (> z y)) (sum_of_squares x z))
+	(((> y x) and (> z x)) (sum_of_squares y z))))
+
+(sum_of_largest_squares 9 10 11)
