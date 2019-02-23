@@ -1,0 +1,40 @@
+1. Q: How would you define Machine Learning?
+   A: Machine learning is teaching computers to learn without being procedurally instructed on a task
+
+2. Q: Can you name four types of problems where it shines?
+   A: 1. Problems for which existing solutions require a lot of hand-tuning or long lists of rules.
+      2. Complex problems for which there is no good solution at all using a traditional approach.
+      3. Problems dealing with fluctuating environments
+      4.  Getting insights about complex problems and large amounts of data
+
+3. Q: What is a labeled training set?
+   A: A training set that is already classified with the desired prediction
+
+4. Q: What are the two most common supervised tasks?
+   A: Classification and regression
+
+5. Q: Can you name four common unsupervised tasks?
+   A: 1. visualization of complex data
+      2. dimensionality reduction / feature extraction
+      3. Anomaly detection
+      4. association rule learning
+
+6. Q: What type of Machine Learning Algorithm would you use to allow a robot to walk in various unknown terrains?
+   A. Reinforcement Learning
+
+7. Q: What type of algorithm would you use to segment your customers into multiple groups?
+   A: Unsupervised clustering
+
+8. Q: Would you frame the problem of spam detection as a supervised learning problem or an unsupervised learning problem?
+   A: Spam classification has traditionally be a supervised learning problem
+
+9. Q: What is an online learning system?
+   A: In online learning training is done in small batches, incrementally while the system runs in a real environment.
+      This is opposed to in batch where training is done all at once, offline.
+
+10. Q: What is out-of-core learning?
+    A: Out-of-core learning is used to deal with huge datasets that cannot fit into memory in an online learning
+       environment.  Out-of-core learning means taking smaller chunks of data and running a training step on those small
+       chunks until all the data is trained.
+
+11.
