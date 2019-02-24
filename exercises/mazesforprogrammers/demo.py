@@ -3,7 +3,7 @@ from common.grids import distance
 from common import runtimedefs
 
 
-m = distance.AnimatedDistanceGrid(70, 70)
+m = distance.AnimatedDistanceGrid(40, 40)
 runtimedefs.DEFAULTALGO(m)
 m.fill_distances(m[int(m.rows/2), int(m.columns/2)])
 m.save_gif()
@@ -12,6 +12,8 @@ m.save_gif()
 # Todo: optimize gif creation and created gif speed
 # Todo: change get_color to RGB walk
 # Todo: autocleanup staging files
+# Todo: change default gradient to not have background color
+# Todo: dwell on final image a bit longer before looping
 
 """
 animated gif notes:
