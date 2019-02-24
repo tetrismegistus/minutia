@@ -60,7 +60,7 @@ class XRayDistanceGrid(DistanceGrid):
             return super(DistanceGrid, self).background_color_for(cell)
 
 
-class AnimatedDistanceGrid(DistanceGrid):
+class AnimatedDistanceGrid(XRayDistanceGrid):
     def __init__(self, rows, columns):
         super(AnimatedDistanceGrid, self).__init__(rows, columns)
         for file_name in os.listdir(rd.DIRS['staging']):
@@ -70,17 +70,6 @@ class AnimatedDistanceGrid(DistanceGrid):
                     os.unlink(file_path)
             except Exception as e:
                 print(e)
-
-    def background_color_for(self, cell):
-        try:
-            distance = self.distances.get(cell)
-            distance = distance if distance else 0
-            intensity = (self._maximum - distance) / self._maximum
-            dark = round(255 * intensity)
-            bright = 128 + round(127 * intensity)
-            return dark, dark, bright
-        except TypeError:
-            return super(DistanceGrid, self).background_color_for(cell)
 
     @property
     def distances(self):
