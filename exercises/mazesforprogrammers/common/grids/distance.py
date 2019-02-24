@@ -72,15 +72,6 @@ class AnimatedDistanceGrid(DistanceGrid):
                 print(e)
 
     def background_color_for(self, cell):
-        """
-        try:
-            distance = self.distances.get(cell)
-            color = (128, 0, 128) if distance else (255, 255, 255)
-            return color
-        except TypeError:
-            return super(DistanceGrid, self).background_color_for(cell)
-        """
-
         try:
             distance = self.distances.get(cell)
             distance = distance if distance else 0
