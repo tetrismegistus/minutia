@@ -1,5 +1,4 @@
-import time
-import os
+import io
 
 import imageio
 import numpy
@@ -41,7 +40,7 @@ class DistanceGrid(Grid):
                         continue
                     distances[linked] = distances[c] + 1
                     new_frontier.append(linked)
-                self.distances = distances
+            self.distances = distances
             frontier = new_frontier
             if len(frontier) == 0:
                 break
@@ -63,13 +62,7 @@ class XRayDistanceGrid(DistanceGrid):
 class AnimatedDistanceGrid(XRayDistanceGrid):
     def __init__(self, rows, columns):
         super(AnimatedDistanceGrid, self).__init__(rows, columns)
-        for file_name in os.listdir(rd.DIRS['staging']):
-            file_path = os.path.join(rd.DIRS['staging'], file_name)
-            try:
-                if os.path.isfile(file_path):
-                    os.unlink(file_path)
-            except Exception as e:
-                print(e)
+        self._frames = []
 
     @property
     def distances(self):
@@ -79,15 +72,11 @@ class AnimatedDistanceGrid(XRayDistanceGrid):
     def distances(self, distances):
         self._distances = distances
         farthest, self._maximum = distances.max()
-        timestamp = time.time()
         img = self.to_img()
-        img.save('{}{}.png'.format(rd.DIRS['staging'], timestamp))
+        with io.BytesIO() as output:
+            img.save(output, format="GIF")
+            self._frames.append(output.getvalue())
 
     def save_gif(self):
-        png_dir = rd.DIRS['staging']
-        images = []
-        for file_name in os.listdir(png_dir):
-            if file_name.endswith('.png'):
-                file_path = os.path.join(png_dir, file_name)
-                images.append(imageio.imread(file_path))
-        imageio.mimsave('{}animated.gif'.format(rd.DIRS['output']), images)
+        images = [imageio.imread(f) for f in self._frames]
+        imageio.mimsave('{}animated.gif'.format(rd.DIRS['output']), images, duration=.00000000001)

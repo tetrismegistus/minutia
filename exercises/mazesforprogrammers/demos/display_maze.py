@@ -63,15 +63,10 @@ def display_window(g):
 
 def main(alg=runtimedefs.DEFAULTALGO,
          w=runtimedefs.DEFAULTW,
-         h=runtimedefs.DEFAULTW,
-         filename=runtimedefs.DIRS['output'] + 'maze.png'):
+         h=runtimedefs.DEFAULTW):
 
     maze = make_distance_maze(w, h, alg)
     return all_distances_by_point(maze, 0, 0)
-
-    # maze = find_long_path(maze)
-    # print(maze)
-    # maze.to_img().save(filename)
 
 
 if __name__ == '__main__':

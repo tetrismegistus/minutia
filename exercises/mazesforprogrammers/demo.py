@@ -1,17 +1,17 @@
-from demos import display_maze
 from common.grids import distance
 from common import runtimedefs
+from algorithms.mazes import binary_tree
 
 
-m = distance.AnimatedDistanceGrid(40, 40)
-runtimedefs.DEFAULTALGO(m)
-m.fill_distances(m[int(m.rows/2), int(m.columns/2)])
+m = distance.AnimatedDistanceGrid(100, 100)
+binary_tree.binary_tree(m)
+
+m.fill_distances(m[m.rows - 1, 0])
 m.save_gif()
 
 # Todo: dynamic resolution based generation
 # Todo: optimize gif creation and created gif speed
 # Todo: change get_color to RGB walk
-# Todo: autocleanup staging files
 # Todo: change default gradient to not have background color
 # Todo: dwell on final image a bit longer before looping
 
