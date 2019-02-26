@@ -4,13 +4,12 @@ from algorithms.mazes import binary_tree
 
 
 m = distance.AnimatedDistanceGrid(100, 100)
-binary_tree.binary_tree(m)
-
+runtimedefs.DEFAULTALGO(m)
 m.fill_distances(m[m.rows - 1, 0])
 m.save_gif()
 
 # Todo: dynamic resolution based generation
-# Todo: optimize gif creation and created gif speed
+# Todo: optimize gif size
 # Todo: change get_color to RGB walk
 # Todo: change default gradient to not have background color
 # Todo: dwell on final image a bit longer before looping
@@ -23,8 +22,6 @@ post production mitigation currently done as
 gifsicle --colors=255 animated.gif -o output.gif                        | prepare for frame removal
 gifsicle -U output.gif `seq -f "#%g" 0 2 1000` -O2 -o output2.gif       | remove frames, can run multiple times
                                                                         | in this example 1000 is num of frames                                                                         
-gifsicle -U output.gif `seq -f "#%g" 0 2 1000` -O2 -o output2.gif       | get the current delay, ex: 10x100
-convert -delay 5x100 output3.gif fast.gif                               | speed up the gif
 gifsicle -O3 < fast.gif fast2.gif                                       | further compression
 
 
