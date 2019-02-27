@@ -2,6 +2,7 @@ import io
 
 import imageio
 import numpy
+import seaborn
 
 from common.grids.grid import Grid
 from common import runtimedefs as rd
@@ -47,21 +48,33 @@ class DistanceGrid(Grid):
 
 
 class XRayDistanceGrid(DistanceGrid):
+    def __init__(self, rows, columns, palette='GnBu_d'):
+        super(XRayDistanceGrid, self).__init__(rows, columns)
+        self.palette = palette
+        self.seaborn_palette = seaborn.color_palette(self.palette, 1).as_hex()
+
+    @property
+    def distances(self):
+        return self._distances
+
+    @distances.setter
+    def distances(self, distances):
+        self._distances = distances
+        farthest, self._maximum = distances.max()
+        tones = self._maximum if self._maximum else 0
+        self.seaborn_palette = seaborn.color_palette(self.palette, tones + 1).as_hex()
+
     def background_color_for(self, cell):
         try:
             distance = self.distances.get(cell)
-            distance = distance if distance else 0
-            intensity = (self._maximum - distance) / self._maximum
-            dark = round(255 * intensity)
-            bright = 128 + round(127 * intensity)
-            return dark, dark, bright
+            return self.seaborn_palette[distance]
         except TypeError:
             return super(DistanceGrid, self).background_color_for(cell)
 
 
 class AnimatedDistanceGrid(XRayDistanceGrid):
-    def __init__(self, rows, columns):
-        super(AnimatedDistanceGrid, self).__init__(rows, columns)
+    def __init__(self, rows, columns, palette='GnBu_d'):
+        super(AnimatedDistanceGrid, self).__init__(rows, columns, palette)
         self._frames = []
 
     @property
@@ -72,11 +85,20 @@ class AnimatedDistanceGrid(XRayDistanceGrid):
     def distances(self, distances):
         self._distances = distances
         farthest, self._maximum = distances.max()
+        tones = self._maximum if self._maximum else 0
+        self.seaborn_palette = seaborn.color_palette(self.palette, tones + 1).as_hex()
         img = self.to_img()
         with io.BytesIO() as output:
-            img.save(output, format="GIF")
+            img.save(output, format="GIF", quality=30)
             self._frames.append(output.getvalue())
 
-    def save_gif(self):
+    def save_gif(self, pause=20, reverse=False):
         images = [imageio.imread(f) for f in self._frames]
+        if not reverse:
+            images += [images[-1] for _ in range(pause)]
+        if reverse:
+            rrw = images.copy()
+            rrw.reverse()
+            images += rrw
+
         imageio.mimsave('{}animated.gif'.format(rd.DIRS['output']), images, duration=.00000000001)

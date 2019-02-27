@@ -3,10 +3,11 @@ from common import runtimedefs
 from algorithms.mazes import binary_tree
 
 
-m = distance.AnimatedDistanceGrid(100, 100)
+m = distance.AnimatedDistanceGrid(50, 50, palette="hls")
 runtimedefs.DEFAULTALGO(m)
-m.fill_distances(m[m.rows - 1, 0])
-m.save_gif()
+cell = m.random_cell()
+m.fill_distances(m[cell.column, cell.row])
+m.save_gif(reverse=True)
 
 # Todo: dynamic resolution based generation
 # Todo: optimize gif size
