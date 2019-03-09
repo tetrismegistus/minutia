@@ -68,6 +68,8 @@ class XRayDistanceGrid(DistanceGrid):
 
     def background_color_for(self, cell):
         try:
+            if len(cell.links) == 0:
+                return 'Gray'
             distance = self.distances.get(cell)
             return self.seaborn_palette[distance]
         except TypeError:
