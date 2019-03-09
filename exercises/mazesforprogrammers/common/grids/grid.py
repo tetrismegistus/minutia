@@ -10,6 +10,7 @@ class Grid:
         self.rows = rows
         self.columns = columns
         self.grid = self.prepare_grid()
+        self.size = rows * columns
         self.configure_cells()
 
     def __getitem__(self, tup):
@@ -161,11 +162,7 @@ class Grid:
             for cell in row:
                 yield cell
 
-    def to_img(self, cell_size=10):
-        """
-        :param cell_size: integer
-        :return: PIL img object
-        """
+    def to_img(self, cell_size=10, backgrounds=True, walls=True):
         img_w = int(cell_size * self.columns)
         img_h = int(cell_size * self.rows)
         margin = 1
@@ -173,9 +170,15 @@ class Grid:
         background = ImageColor.getcolor('White', 'RGB')
         wall = ImageColor.getcolor('Black', 'RGB')
         img = Image.new('RGB', (img_w + margin, img_h + margin), color=background)
+        modes = []
+        if backgrounds:
+            modes.append('backgrounds')
+
+        if walls:
+            modes.append('walls')
 
         drawing = ImageDraw.Draw(img)
-        for mode in ['backgrounds', 'walls']:
+        for mode in modes:
             for cell in self.each_cell():
                 x1 = cell.column * cell_size  # northwest corner
                 y1 = cell.row * cell_size
@@ -198,3 +201,5 @@ class Grid:
                     if not cell.linked(cell.south):
                         drawing.line([(x1, y2), (x2, y2)], fill=wall)
         return img
+
+

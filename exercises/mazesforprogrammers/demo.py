@@ -1,19 +1,27 @@
-from common.grids import distance
+from common.grids import distance, grid
+from common.Animation import Animation
 from common import runtimedefs
-from algorithms.mazes import binary_tree
+from demos import display_maze
+from algorithms.mazes import binary_tree, aldous_broder, wilsons, hybrids, sidewinder
+import seaborn
 
 
-m = distance.AnimatedDistanceGrid(50, 50, palette="hls")
-runtimedefs.DEFAULTALGO(m)
-cell = m.random_cell()
-m.fill_distances(m[cell.column, cell.row])
-m.save_gif(reverse=True)
+# m = distance.XRayDistanceGrid(100, 100, palette="hls", walls=False, cell_size=3)
+# m = distance.XRayDistanceGrid(100, 100, palette="cubehelix")
+animation = Animation()
+m = distance.XRayDistanceGrid(10, 10)
+m = wilsons.wilsons(m, animation=animation)
+m.animation = animation
+m.fill_distances(m.random_cell())
+#m.to_img().save('test.png')
+m.animation.save_gif()
+animation.save_gif()
 
 # Todo: dynamic resolution based generation
 # Todo: optimize gif size
-# Todo: change get_color to RGB walk
-# Todo: change default gradient to not have background color
-# Todo: dwell on final image a bit longer before looping
+# Todo: make functions for my most common operations in demos
+# Todo: Create UI for generating and previewing and saving mazes, including serializing grid object
+# Todo: go through and make sure all algorithms receive animation object
 
 """
 animated gif notes:

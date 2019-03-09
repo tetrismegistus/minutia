@@ -1,11 +1,7 @@
-import io
-
-import imageio
 import numpy
 import seaborn
 
 from common.grids.grid import Grid
-from common import runtimedefs as rd
 from algorithms.pathfinders.distances import Distances
 
 
@@ -48,10 +44,13 @@ class DistanceGrid(Grid):
 
 
 class XRayDistanceGrid(DistanceGrid):
-    def __init__(self, rows, columns, palette='GnBu_d'):
+    def __init__(self, rows, columns, cell_size=10, walls=True, palette='winter', animation=None):
         super(XRayDistanceGrid, self).__init__(rows, columns)
         self.palette = palette
         self.seaborn_palette = seaborn.color_palette(self.palette, 1).as_hex()
+        self.animation = None
+        self.cell_size = cell_size
+        self.walls = walls
 
     @property
     def distances(self):
@@ -62,7 +61,10 @@ class XRayDistanceGrid(DistanceGrid):
         self._distances = distances
         farthest, self._maximum = distances.max()
         tones = self._maximum if self._maximum else 0
+        # self.seaborn_palette = seaborn.dark_palette("purple", tones + 1).as_hex()
         self.seaborn_palette = seaborn.color_palette(self.palette, tones + 1).as_hex()
+        if self.animation:
+            self.animation.frames = self.to_img(cell_size=self.cell_size, walls=self.walls)
 
     def background_color_for(self, cell):
         try:
@@ -70,35 +72,3 @@ class XRayDistanceGrid(DistanceGrid):
             return self.seaborn_palette[distance]
         except TypeError:
             return super(DistanceGrid, self).background_color_for(cell)
-
-
-class AnimatedDistanceGrid(XRayDistanceGrid):
-    def __init__(self, rows, columns, palette='GnBu_d'):
-        super(AnimatedDistanceGrid, self).__init__(rows, columns, palette)
-        self._frames = []
-
-    @property
-    def distances(self):
-        return self._distances
-
-    @distances.setter
-    def distances(self, distances):
-        self._distances = distances
-        farthest, self._maximum = distances.max()
-        tones = self._maximum if self._maximum else 0
-        self.seaborn_palette = seaborn.color_palette(self.palette, tones + 1).as_hex()
-        img = self.to_img()
-        with io.BytesIO() as output:
-            img.save(output, format="GIF", quality=30)
-            self._frames.append(output.getvalue())
-
-    def save_gif(self, pause=20, reverse=False):
-        images = [imageio.imread(f) for f in self._frames]
-        if not reverse:
-            images += [images[-1] for _ in range(pause)]
-        if reverse:
-            rrw = images.copy()
-            rrw.reverse()
-            images += rrw
-
-        imageio.mimsave('{}animated.gif'.format(rd.DIRS['output']), images, duration=.00000000001)

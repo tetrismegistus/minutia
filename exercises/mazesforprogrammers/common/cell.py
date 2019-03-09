@@ -1,6 +1,3 @@
-from algorithms.pathfinders.distances import Distances
-
-
 class Cell:
     def __init__(self, row, column):
         self.row = row
@@ -11,13 +8,17 @@ class Cell:
         self.east = None
         self.west = None
 
-    def link(self, cell, bidi=True):
+    def link(self, cell, bidi=True, animation=None, grid=None):
         self.links[cell] = True
+        if animation:
+            animation.frames = grid.to_img()
         if bidi:
             try:
-                cell.link(self, False)
+                cell.link(self, False, animation=animation, grid=grid)
             except:
                 print('links {} \ncell {}\n self {}'.format(self.links, cell, self))
+
+        return animation
 
     def unlink(self, cell, bidi=True):
         del self.links[cell]

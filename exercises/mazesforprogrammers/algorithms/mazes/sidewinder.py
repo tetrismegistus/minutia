@@ -1,7 +1,7 @@
 from random import randint, choice
 
 
-def sidewinder(grid):
+def sidewinder(grid, animation=None):
     for row in grid.each_row():
         run = []
         for c in row:
@@ -14,7 +14,9 @@ def sidewinder(grid):
             if should_close_out:
                 member = choice(run)
                 if member.north:
-                    member.link(member.north)
+                    member.link(member.north, animation=animation, grid=grid)
                 run = []
             else:
-                c.link(c.east)
+                c.link(c.east, animation=animation, grid=grid)
+
+    return grid

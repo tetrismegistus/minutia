@@ -1,36 +1,5 @@
 import tkinter
-from PIL import Image, ImageTk
-
-from common import runtimedefs
-from common.grids import grid, distance
-
-
-def make_maze(w: int, h: int, alg):
-    """
-    args w: width, integer
-         h: height, integer
-         alg: algorithm function or method from algorithms.mazes
-    """
-    g = grid.Grid(w, h)
-    alg(g)
-    return g
-
-
-def make_distance_maze(w: int, h: int, alg):
-    g = distance.DistanceGrid(w, h)
-    alg(g)
-    return g
-
-
-def find_random_path(distance_grid):
-    path_start = distance_grid.random_cell()
-    path_end = distance_grid.random_cell()
-    while path_end == path_start:
-        path_end = distance_grid.random_cell()
-
-    distance_grid.distances = path_start.distances()
-    distance_grid.distances = distance_grid.distances.path_to(path_end)
-    return distance_grid
+from PIL import ImageTk
 
 
 def all_distances_by_point(distance_grid, x, y):
@@ -41,11 +10,11 @@ def all_distances_by_point(distance_grid, x, y):
 
 def find_long_path(distance_grid):
     path_start = distance_grid.random_cell()
-    distances = path_start.distances()
-    new_start, new_distance = distances.max()
-    new_distances = new_start.distances()
-    goal, new_distance = new_distances.max()
-    distance_grid.distances = new_distances.path_to(goal)
+    distance_grid.fill_distances(distance_grid[path_start.column, path_start.row])
+    new_start, new_distance = distance_grid.distances.max()
+    distance_grid.fill_distances(distance_grid[new_start.column, new_start.row])
+    goal, new_distance = distance_grid.distances.max()
+    distance_grid.distances = distance_grid.distances.path_to(goal)
     return distance_grid
 
 
@@ -59,15 +28,3 @@ def display_window(g):
     tkimage = ImageTk.PhotoImage(img)
     tkinter.Label(root, image=tkimage).pack()
     root.mainloop()
-
-
-def main(alg=runtimedefs.DEFAULTALGO,
-         w=runtimedefs.DEFAULTW,
-         h=runtimedefs.DEFAULTW):
-
-    maze = make_distance_maze(w, h, alg)
-    return all_distances_by_point(maze, 0, 0)
-
-
-if __name__ == '__main__':
-    main()
