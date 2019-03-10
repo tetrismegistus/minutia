@@ -22,7 +22,3 @@ def wilsons(grid, animation=None):
             unvisited.remove(path[i])
 
     return grid
-
-
-
-

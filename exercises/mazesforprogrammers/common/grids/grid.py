@@ -1,16 +1,19 @@
 from random import randint
+from collections import namedtuple
 
 from PIL import Image, ImageColor, ImageDraw
 
 from common.cell import Cell
 
+Rectangle = namedtuple('rectangle', ['w', 'h'])
+
 
 class Grid:
-    def __init__(self, rows, columns):
-        self.rows = rows
-        self.columns = columns
+    def __init__(self, size: Rectangle):
+        self.rows = size.h
+        self.columns = size.w
         self.grid = self.prepare_grid()
-        self.size = rows * columns
+        self.size = self.rows * self.columns
         self.configure_cells()
 
     def __getitem__(self, tup):
@@ -162,9 +165,9 @@ class Grid:
             for cell in row:
                 yield cell
 
-    def to_img(self, cell_size=10, backgrounds=True, walls=True):
-        img_w = int(cell_size * self.columns)
-        img_h = int(cell_size * self.rows)
+    def to_img(self, cell_size: Rectangle = Rectangle(w = 10, h = 10), backgrounds=True, walls=True):
+        img_w = int(cell_size.w * self.columns)
+        img_h = int(cell_size.h * self.rows)
         margin = 1
 
         background = ImageColor.getcolor('White', 'RGB')
@@ -180,10 +183,10 @@ class Grid:
         drawing = ImageDraw.Draw(img)
         for mode in modes:
             for cell in self.each_cell():
-                x1 = cell.column * cell_size  # northwest corner
-                y1 = cell.row * cell_size
-                x2 = (cell.column + 1) * cell_size  # southeast corner
-                y2 = (cell.row + 1) * cell_size
+                x1 = cell.column * cell_size.w  # northwest corner
+                y1 = cell.row * cell_size.h
+                x2 = (cell.column + 1) * cell_size.w  # southeast corner
+                y2 = (cell.row + 1) * cell_size.h
 
                 if mode == 'backgrounds':
                     color = self.background_color_for(cell)
@@ -201,5 +204,15 @@ class Grid:
                     if not cell.linked(cell.south):
                         drawing.line([(x1, y2), (x2, y2)], fill=wall)
         return img
+
+    @staticmethod
+    def propose_cell_size(resolution: Rectangle, grid_size: Rectangle):
+        height_cell_size = int(resolution.h / grid_size.h)
+        width_cell_size = int(resolution.w / grid_size.w)
+        return Rectangle(w=width_cell_size, h=height_cell_size)
+
+    @staticmethod
+    def propose_grid_size(resolution: Rectangle, cell_size: Rectangle):
+        return Grid.propose_cell_size(resolution=resolution, grid_size=cell_size)
 
 

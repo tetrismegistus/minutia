@@ -1,13 +1,13 @@
 import numpy
 import seaborn
 
-from common.grids.grid import Grid
 from algorithms.pathfinders.distances import Distances
+from common.grids.grid import Rectangle, Grid
 
 
 class DistanceGrid(Grid):
-    def __init__(self, rows, columns):
-        super(DistanceGrid, self).__init__(rows, columns)
+    def __init__(self, size: Rectangle):
+        super(DistanceGrid, self).__init__(size=size)
         self._distances = {}
         self._maximum = None
 
@@ -44,11 +44,13 @@ class DistanceGrid(Grid):
 
 
 class XRayDistanceGrid(DistanceGrid):
-    def __init__(self, rows, columns, cell_size=10, walls=True, palette='winter', animation=None):
-        super(XRayDistanceGrid, self).__init__(rows, columns)
+    def __init__(self, size: Rectangle,
+                 cell_size: Rectangle = Rectangle(w = 10, h = 10),
+                 walls=True, palette='winter', animation=None):
+        super(XRayDistanceGrid, self).__init__(size)
         self.palette = palette
         self.seaborn_palette = seaborn.color_palette(self.palette, 1).as_hex()
-        self.animation = None
+        self.animation = animation
         self.cell_size = cell_size
         self.walls = walls
 

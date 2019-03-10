@@ -1,16 +1,28 @@
-import tkinter
-from PIL import ImageTk
-
 from common.grids import distance, grid
 from common.Animation import Animation
 import common.runtimedefs as rundefs
+from common.grids.grid import Rectangle, Grid
+
+"""
+animated gif notes:
+larger mazes make huge files with a slowish animation 
+post production mitigation currently done as
+
+gifsicle --colors=255 animated.gif -o output.gif                        | prepare for frame removal
+gifsicle -U output.gif `seq -f "#%g" 0 2 1000` -O2 -o output2.gif       | remove frames, can run multiple times
+                                                                        | in this example 1000 is num of frames                                                                         
+gifsicle -O3 < fast.gif fast2.gif                                       | further compression
+
+"""
 
 
-def find_long_path(w=20, h=20, algo=rundefs.DEFAULTALGO, cell_size=10, palette="winter", walls=True, animation=False):
+def find_long_path(grid_size: Rectangle = Rectangle(w = 20, h = 20), algo=rundefs.DEFAULTALGO,
+                   cell_size: Rectangle = Rectangle(w = 10, h = 10),
+                   palette="winter", walls=True, animation=False):
     if animation:
         animation = Animation()
 
-    m = distance.XRayDistanceGrid(w, h, palette=palette, cell_size=cell_size, walls=walls)
+    m = distance.XRayDistanceGrid(grid_size, palette=palette, cell_size=cell_size, walls=walls)
     m = algo(m)
 
     if animation:
@@ -24,19 +36,18 @@ def find_long_path(w=20, h=20, algo=rundefs.DEFAULTALGO, cell_size=10, palette="
 
     goal, new_distance = m.distances.max()
     m.distances = m.distances.path_to(goal)
-    m.to_img(cell_size=cell_size).save(rundefs.DIRS['output'] + 'long_path.png')
+    m.to_img(cell_size=cell_size).save(rundefs.DIRS['output'] + 'long_path.png', walls=walls)
     if animation:
         m.animation.save_gif()
-    # display_window(m)
 
 
-
-def flood(w=50, h=50, palette="winter", animation=True, png=False, algo=rundefs.DEFAULTALGO, cell_size=10,
+def flood(grid_size: Rectangle = Rectangle(w=50, h=50), palette="winter", animation=True, png=False,
+          algo=rundefs.DEFAULTALGO, cell_size: Rectangle = Rectangle(w=10, h=10),
           walls=True):
     if animation:
         animation = Animation()
 
-    m = distance.XRayDistanceGrid(w, h, palette=palette, walls=walls, cell_size=cell_size)
+    m = distance.XRayDistanceGrid(grid_size, palette=palette, walls=walls, cell_size=cell_size)
     m = algo(m)
 
     if animation:
@@ -48,39 +59,26 @@ def flood(w=50, h=50, palette="winter", animation=True, png=False, algo=rundefs.
         m.animation.save_gif()
 
     if png:
-        # display_window(m)
-        m.to_img().save(rundefs.DIRS['output'] + 'flood.png')
+        m.to_img(cell_size=cell_size, walls=walls).save(rundefs.DIRS['output'] + 'flood.png')
 
 
-def carve_and_flood(w=20, h=20, palette="winter", algo=rundefs.DEFAULTALGO):
+def carve_and_flood(grid_size: Rectangle = Rectangle(w=20, h=20), palette="winter", algo=rundefs.DEFAULTALGO):
     animation = Animation()
-    m = distance.XRayDistanceGrid(w, h, palette=palette)
+    m = distance.XRayDistanceGrid(grid_size, palette=palette)
     m = algo(m, animation=animation)
     m.animation = animation
     m.fill_distances(m.random_cell())
     m.animation.save_gif()
 
 
-def maze_without_walls(w=50, h=50, animation=True, png=False, palette="cubehelix", algo=rundefs.DEFAULTALGO,
-                       cell_size=3):
+def maze_without_walls(grid_size: Rectangle = Rectangle(w=50, h=50),
+                       animation=True, png=False, palette="cubehelix",
+                       algo=rundefs.DEFAULTALGO,
+                       cell_size: Rectangle = Rectangle(w = 3, h = 3)):
+    flood(grid_size, animation=animation, png=png, palette=palette, algo=algo, cell_size=cell_size, walls=False)
 
-    flood(w, h, animation=animation, png=png, palette=palette, algo=algo, cell_size=cell_size, walls=False)
 
-
-def plain_jane(w=10, h=10, algo=rundefs.DEFAULTALGO, cell_size=10):
-    m = grid.Grid(w, h)
+def plain_jane(grid_size: Rectangle, algo=rundefs.DEFAULTALGO, cell_size: Rectangle = Rectangle(w=10, h=10)):
+    m = grid.Grid(grid_size)
     m = algo(m)
     m.to_img(cell_size=cell_size).save(rundefs.DIRS['output'] + 'plainjane.png')
-    # display_window(m)
-
-
-def display_window(g):
-    """
-    :param g: grid object
-    :return:
-    """
-    root = tkinter.Tk()
-    img = g.to_img()
-    tkimage = ImageTk.PhotoImage(img)
-    tkinter.Label(root, image=tkimage).pack()
-    root.mainloop()

@@ -37,4 +37,3 @@ class Cell:
             if direction:
                 dlist.append(direction)
         return dlist
-
