@@ -1,5 +1,6 @@
 from random import randint
 from collections import namedtuple
+from collections import defaultdict
 
 from PIL import Image, ImageColor, ImageDraw
 
@@ -52,23 +53,24 @@ class Grid:
                     else:
                         bottom_row += "┃" if col.linked(col.south) else "┣"
 
+
                 # entries represent whether there is a connecting wall at that dir from corner
                 # 'n': False   ==   there is no connecting wall to the north
                 # all corners are the southeast corner of the current cell, or col
-                bottom_corner = {'n': False if col.linked(col.east) else True,
+                bttm_crnr = {'n': False if col.linked(col.east) else True,
                                  'e': None,
                                  's': None,
                                  'w': False if col.linked(col.south) else True}
 
                 if col.east:
-                    bottom_corner['e'] = False if col.east.linked(col.east.south) else True
+                    bttm_crnr['e'] = False if col.east.linked(col.east.south) else True
                 else:
-                    bottom_corner['e'] = False
+                    bttm_crnr['e'] = False
 
                 if col.south:
-                    bottom_corner['s'] = False if col.south.linked(col.south.east) else True
+                    bttm_crnr['s'] = False if col.south.linked(col.south.east) else True
                 else:
-                    bottom_corner['s'] = False
+                    bttm_crnr['s'] = False
 
                 cell_contents = self.contents_of(col)
 
@@ -76,52 +78,20 @@ class Grid:
                 cell_row += " " if col.linked(col.east) else "┃"
                 cell_row += "\n" if cindex == self.rows - 1 else ""
 
-                if (bottom_corner['n'] and
-                        bottom_corner['s'] and
-                        bottom_corner['e'] and
-                        bottom_corner['w']):
-                    corner = "╋"
-                elif (bottom_corner['n'] and
-                        bottom_corner['e'] and
-                        bottom_corner['w'] and
-                        not bottom_corner['s']):
-                    corner = "┻"
-                elif (bottom_corner['n'] and
-                        bottom_corner['e'] and
-                        bottom_corner['s']):
-                    corner = "┣"
-                elif (bottom_corner['n'] and
-                        bottom_corner['w'] and
-                        bottom_corner['s']):
-                    corner = "┫"
-                elif (bottom_corner['s'] and
-                        bottom_corner['e'] and
-                        bottom_corner['w']):
-                    corner = "┳"
-                elif (bottom_corner['n'] and
-                      bottom_corner['s']):
-                    corner = "┃"
-                elif (bottom_corner['e'] and
-                      bottom_corner['w']):
-                    corner = "━"
-                elif (bottom_corner['w'] and
-                      bottom_corner['s']):
-                    corner = "┓"
-                elif (bottom_corner['e'] and
-                      bottom_corner['s']):
-                    corner = "┏"
-                elif (bottom_corner['e'] and
-                      bottom_corner['n']):
-                    corner = "┗"
-                elif (bottom_corner['w'] and
-                      bottom_corner['n']):
-                    corner = "┛"
-                elif bottom_corner['w']:
-                    corner = "╸"
-                elif bottom_corner['e']:
-                    corner = "╺"
-                elif bottom_corner['s']:
-                    corner = "┃"
+                if bttm_crnr['n'] and bttm_crnr['s'] and bttm_crnr['e'] and bttm_crnr['w']: corner = "╋"
+                elif bttm_crnr['n'] and bttm_crnr['e'] and bttm_crnr['w'] and not bttm_crnr['s']: corner = "┻"
+                elif bttm_crnr['n'] and bttm_crnr['e'] and bttm_crnr['s'] and not bttm_crnr['w']: corner = "┣"
+                elif bttm_crnr['n'] and bttm_crnr['w'] and bttm_crnr['s'] and not bttm_crnr['e']: corner = "┫"
+                elif bttm_crnr['s'] and bttm_crnr['e'] and bttm_crnr['w'] and not bttm_crnr['n']: corner = "┳"
+                elif bttm_crnr['n'] and bttm_crnr['s'] and not bttm_crnr['e'] and not bttm_crnr['w']: corner = "┃"
+                elif bttm_crnr['e'] and bttm_crnr['w'] and not bttm_crnr['n']: corner = "━"
+                elif bttm_crnr['w'] and bttm_crnr['s'] and not bttm_crnr['n']: corner = "┓"
+                elif bttm_crnr['e'] and bttm_crnr['s'] and not bttm_crnr['n']: corner = "┏"
+                elif bttm_crnr['e'] and bttm_crnr['n']: corner = "┗"
+                elif bttm_crnr['w'] and bttm_crnr['n']: corner = "┛"
+                elif bttm_crnr['w']: corner = "╸"
+                elif bttm_crnr['e']: corner = "╺"
+                else : corner = "┃"
 
                 bottom_row += "   " if col.linked(col.south) else "━━━"
                 bottom_row += corner
@@ -164,6 +134,9 @@ class Grid:
         for row in self.each_row():
             for cell in row:
                 yield cell
+
+    def dead_ends(self):
+        return [cell for cell in self.each_cell() if len(cell.links) == 1]
 
     def to_img(self, cell_size: Rectangle = Rectangle(w = 10, h = 10), backgrounds=True, walls=True):
         img_w = int(cell_size.w * self.columns)
@@ -214,5 +187,3 @@ class Grid:
     @staticmethod
     def propose_grid_size(resolution: Rectangle, cell_size: Rectangle):
         return Grid.propose_cell_size(resolution=resolution, grid_size=cell_size)
-
-
