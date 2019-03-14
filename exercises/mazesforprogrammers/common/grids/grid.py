@@ -1,6 +1,5 @@
 from random import randint
 from collections import namedtuple
-from collections import defaultdict
 
 from PIL import Image, ImageColor, ImageDraw
 
@@ -24,80 +23,7 @@ class Grid:
         return self.grid[row][col] if vrow and vcol else None
 
     def __str__(self):
-        # God forgive me
-        output = ""
-        for rindex, row in enumerate(self.each_row()):
-            # for every row of the grid
-            if rindex == 0:
-                # draw top row
-                output += "┏"
-                for cindex, col in enumerate(row):
-                    # for every cell of the top row draw the top wall
-                    output += "━━━"
-                    # and an appropriate corner
-                    if col.linked(col.east):
-                        output += "━"
-                    elif cindex == self.columns - 1:
-                        output += "┓"
-                    else:
-                        output += "┳"
-                output += "\n"
-
-            cell_row = ""
-            bottom_row = ""
-            for cindex, col in enumerate(row):
-                if cindex == 0:
-                    cell_row += "┃"
-                    if rindex == self.rows - 1:
-                        bottom_row += "┗"
-                    else:
-                        bottom_row += "┃" if col.linked(col.south) else "┣"
-
-
-                # entries represent whether there is a connecting wall at that dir from corner
-                # 'n': False   ==   there is no connecting wall to the north
-                # all corners are the southeast corner of the current cell, or col
-                bttm_crnr = {'n': False if col.linked(col.east) else True,
-                                 'e': None,
-                                 's': None,
-                                 'w': False if col.linked(col.south) else True}
-
-                if col.east:
-                    bttm_crnr['e'] = False if col.east.linked(col.east.south) else True
-                else:
-                    bttm_crnr['e'] = False
-
-                if col.south:
-                    bttm_crnr['s'] = False if col.south.linked(col.south.east) else True
-                else:
-                    bttm_crnr['s'] = False
-
-                cell_contents = self.contents_of(col)
-
-                cell_row += '{}'.format(self.contents_of(col)).rjust(3)
-                cell_row += " " if col.linked(col.east) else "┃"
-                cell_row += "\n" if cindex == self.rows - 1 else ""
-
-                if bttm_crnr['n'] and bttm_crnr['s'] and bttm_crnr['e'] and bttm_crnr['w']: corner = "╋"
-                elif bttm_crnr['n'] and bttm_crnr['e'] and bttm_crnr['w'] and not bttm_crnr['s']: corner = "┻"
-                elif bttm_crnr['n'] and bttm_crnr['e'] and bttm_crnr['s'] and not bttm_crnr['w']: corner = "┣"
-                elif bttm_crnr['n'] and bttm_crnr['w'] and bttm_crnr['s'] and not bttm_crnr['e']: corner = "┫"
-                elif bttm_crnr['s'] and bttm_crnr['e'] and bttm_crnr['w'] and not bttm_crnr['n']: corner = "┳"
-                elif bttm_crnr['n'] and bttm_crnr['s'] and not bttm_crnr['e'] and not bttm_crnr['w']: corner = "┃"
-                elif bttm_crnr['e'] and bttm_crnr['w'] and not bttm_crnr['n']: corner = "━"
-                elif bttm_crnr['w'] and bttm_crnr['s'] and not bttm_crnr['n']: corner = "┓"
-                elif bttm_crnr['e'] and bttm_crnr['s'] and not bttm_crnr['n']: corner = "┏"
-                elif bttm_crnr['e'] and bttm_crnr['n']: corner = "┗"
-                elif bttm_crnr['w'] and bttm_crnr['n']: corner = "┛"
-                elif bttm_crnr['w']: corner = "╸"
-                elif bttm_crnr['e']: corner = "╺"
-                else : corner = "┃"
-
-                bottom_row += "   " if col.linked(col.south) else "━━━"
-                bottom_row += corner
-
-                # draw right
-            output += cell_row + bottom_row + "\n"
+        output = "grid.__str__ was mangled beyond recognition and requires a complete refactor"
 
         return output
 
@@ -133,18 +59,20 @@ class Grid:
     def each_cell(self):
         for row in self.each_row():
             for cell in row:
-                yield cell
+                if cell:
+                    yield cell
 
     def dead_ends(self):
         return [cell for cell in self.each_cell() if len(cell.links) == 1]
 
-    def to_img(self, cell_size: Rectangle = Rectangle(w = 10, h = 10), backgrounds=True, walls=True):
-        img_w = int(cell_size.w * self.columns)
-        img_h = int(cell_size.h * self.rows)
+    def to_img(self, cell_size: Rectangle = Rectangle(w = 10, h = 10), backgrounds=True, walls=True,
+               background_color='#000000', wall_color='#FFFFFF'):
+        img_h = int(cell_size.h * self.columns)
+        img_w = int(cell_size.w * self.rows)
         margin = 1
 
-        background = ImageColor.getcolor('White', 'RGB')
-        wall = ImageColor.getcolor('Black', 'RGB')
+        background = background_color
+        wall_color = wall_color
         img = Image.new('RGB', (img_w + margin, img_h + margin), color=background)
         modes = []
         if backgrounds:
@@ -156,26 +84,29 @@ class Grid:
         drawing = ImageDraw.Draw(img)
         for mode in modes:
             for cell in self.each_cell():
-                x1 = cell.column * cell_size.w  # northwest corner
-                y1 = cell.row * cell_size.h
-                x2 = (cell.column + 1) * cell_size.w  # southeast corner
-                y2 = (cell.row + 1) * cell_size.h
+
+                y1 = cell.column * cell_size.h  # northwest corner
+                x1 = cell.row * cell_size.w
+                y2 = (cell.column + 1) * cell_size.h  # southeast corner
+                x2 = (cell.row + 1) * cell_size.w
 
                 if mode == 'backgrounds':
                     color = self.background_color_for(cell)
-                    drawing.rectangle([(x1, y1), (x2, y2)], fill=color if color else None)
+                    if not color:
+                        color = '#000000'
+                    drawing.rectangle([(x1, y1), (x2, y2)], fill=color)
                 else:
-                    if not cell.north:
-                        drawing.line([(x1, y1), (x2, y1)], fill=wall)
-
                     if not cell.west:
-                        drawing.line([(x1, y1), (x1, y2)], fill=wall)
+                        drawing.line([(x1, y1), (x2, y1)], fill=wall_color)
 
-                    if not cell.linked(cell.east):
-                        drawing.line([(x2, y1), (x2, y2)], fill=wall)
+                    if not cell.north:
+                        drawing.line([(x1, y1), (x1, y2)], fill=wall_color)
 
                     if not cell.linked(cell.south):
-                        drawing.line([(x1, y2), (x2, y2)], fill=wall)
+                        drawing.line([(x2, y1), (x2, y2)], fill=wall_color)
+
+                    if not cell.linked(cell.east):
+                        drawing.line([(x1, y2), (x2, y2)], fill=wall_color)
         return img
 
     @staticmethod

@@ -21,13 +21,35 @@ gifsicle -O3 < fast.gif fast2.gif                                       | furthe
 """
 
 
-def create_maze(**kwargs):
-    m = kwargs['grid'](kwargs['grid_size'], palette=kwargs['palette'], cell_size=kwargs['cell_size'],
-                       walls=kwargs['walls'])
+def create_maze(grid_size, palette, cell_size, walls, grid, algo, animation, filename):
+    m = grid(grid_size, palette=palette, cell_size=cell_size, walls=walls)
 
-    kwargs['algo'](m)
+    algo(m)
 
-    if kwargs['animation']:
+    if animation:
+        animation = Animation()
+        m.animation = animation
+    else:
+        animation = False
+
+    path_start = m.random_cell()
+    m.fill_distances(m[path_start.column, path_start.row])
+
+    m.to_img(cell_size=cell_size).save(rundefs.DIRS['output'] + filename, walls=walls)
+
+    if animation:
+        m.animation.save_gif()
+
+
+def find_long_path(grid_size: Rectangle = Rectangle(w = 20, h = 20), algo=rundefs.DEFAULTALGO,
+                   cell_size: Rectangle = Rectangle(w = 10, h = 10),
+                   palette="winter", walls=True, animation=False, png=True):
+
+    m = distance.DistanceGrid(grid_size, palette=palette, cell_size=cell_size, walls=walls)
+
+    algo(m)
+
+    if animation:
         animation = Animation()
         m.animation = animation
     else:
@@ -41,18 +63,10 @@ def create_maze(**kwargs):
 
     goal, new_distance = m.distances.max()
     m.distances = m.distances.path_to(goal)
-    m.to_img(cell_size=kwargs['cell_size']).save(rundefs.DIRS['output'] + kwargs['filename'], walls=kwargs['walls'])
+    m.to_img(cell_size=cell_size).save(rundefs.DIRS['output'] + filename, walls=walls)
 
     if animation:
         m.animation.save_gif()
-
-
-def find_long_path(grid_size: Rectangle = Rectangle(w = 20, h = 20), algo=rundefs.DEFAULTALGO,
-                   cell_size: Rectangle = Rectangle(w = 10, h = 10),
-                   palette="winter", walls=True, animation=False, png=True):
-
-    create_maze(grid_size=grid_size, palette=palette, animation=animation, png=png, algo=algo, cell_size=cell_size,
-                walls=walls, grid=distance.DistanceGrid, filename='long_path.png')
 
 
 def depth_first_fill(grid_size: Rectangle = Rectangle(w=30, h=30), palette="winter", animation=True, png=False,
@@ -71,6 +85,13 @@ def flood(grid_size: Rectangle = Rectangle(w=50, h=50), palette="winter", animat
                 walls=walls, grid=distance.DistanceGrid, filename='flood.png')
 
 
+def maze_without_walls(grid_size: Rectangle = Rectangle(w=50, h=50),
+                       animation=True, png=False, palette="cubehelix",
+                       algo=rundefs.DEFAULTALGO,
+                       cell_size: Rectangle = Rectangle(w = 3, h = 3)):
+    flood(grid_size, animation=animation, png=png, palette=palette, algo=algo, cell_size=cell_size, walls=False)
+
+
 def carve_and_flood(grid_size: Rectangle = Rectangle(w=20, h=20), palette="winter", algo=rundefs.DEFAULTALGO):
     animation = Animation()
     m = distance.DistanceGrid(grid_size, palette=palette)
@@ -78,13 +99,6 @@ def carve_and_flood(grid_size: Rectangle = Rectangle(w=20, h=20), palette="winte
     m.animation = animation
     m.fill_distances(m.random_cell())
     m.animation.save_gif()
-
-
-def maze_without_walls(grid_size: Rectangle = Rectangle(w=50, h=50),
-                       animation=True, png=False, palette="cubehelix",
-                       algo=rundefs.DEFAULTALGO,
-                       cell_size: Rectangle = Rectangle(w = 3, h = 3)):
-    flood(grid_size, animation=animation, png=png, palette=palette, algo=algo, cell_size=cell_size, walls=False)
 
 
 def plain_jane(grid_size: Rectangle, algo=rundefs.DEFAULTALGO,
@@ -108,7 +122,7 @@ def deadend_map(grid_size: Rectangle = Rectangle(w = 50, h = 50),
 
 
 def compare_dead_ends(grid_size: Rectangle = Rectangle(w=20, h=20), tries: int = 100):
-    algos = [aldous_broder.aldous_broder, wilsons.wilsons, binary_tree.binary_tree, sidewinder.sidewinder,
+    algos = [aldous_broder.AldousBroder, wilsons.wilsons, binary_tree.binary_tree, sidewinder.sidewinder,
              hunt_and_kill.hunt_and_kill, recursive_backtracker.TrueRecursiveBacktracker]
     names = "aldous-broder wilsons binary_tree sidewinder hunt_and_kill recursive_backtracker".split()
     averages = {}

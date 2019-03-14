@@ -55,11 +55,12 @@ class DistanceGrid(Grid):
         while True:
             new_frontier = []
             for c in frontier:
-                for linked in c.links:
-                    if distances.get(linked) is not None:
-                        continue
-                    distances[linked] = distances[c] + 1
-                    new_frontier.append(linked)
+                if c is not None:
+                    for linked in c.links:
+                        if distances.get(linked) is not None:
+                            continue
+                        distances[linked] = distances[c] + 1
+                        new_frontier.append(linked)
             self.distances = distances
             frontier = new_frontier
             if len(frontier) == 0:

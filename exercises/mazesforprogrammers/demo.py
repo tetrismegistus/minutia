@@ -1,5 +1,11 @@
+import random
+
 import demos.display_maze as demos
+from algorithms.mazes.recursive_backtracker import TrueRecursiveBacktracker
 from common.grids.grid import Rectangle, Grid
+from common.grids.masked_grid import MaskedGrid, MaskedDistanceGrid
+from common.mask import Mask
+from common.Animation import Animation
 
 # resolution = Rectangle(w=2560, h=1080)
 # cell_size = Rectangle(w=3, h=3)
@@ -12,7 +18,17 @@ from common.grids.grid import Rectangle, Grid
 # demos.deadend_map(palette="Greens")
 # demos.depth_first_fill(grid_size=Rectangle(30, 30), animation=True, palette="hls")
 # demos.find_long_path()
-demos.flood()
+# demos.flood()
+mask = Mask.from_png('masks/netara_maze.png')
+grid = MaskedDistanceGrid(mask, walls=True, palette="Blues")
+print('c{} r{}'.format(grid.columns, grid.rows))
+TrueRecursiveBacktracker(grid)
+animation = Animation()
+grid.animation = animation
+path_start = grid.random_cell()
+grid.fill_distances(grid[path_start.row, path_start.column])
+grid.to_img(cell_size=Rectangle(10, 10)).save('Fire.png')
+grid.animation.save_gif(reverse=True)
 
 
 # Todo: optimize gif size
