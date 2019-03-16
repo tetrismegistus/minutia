@@ -28,4 +28,5 @@ class Animation:
             rrw.reverse()
             images += rrw
 
-        imageio.mimsave('{}animated.gif'.format(rd.DIRS['output']), images, duration=.00000000001)
+        imageio.mimsave('{}animated.gif'.format(rd.DIRS['output']), images, duration=.000000001)
+

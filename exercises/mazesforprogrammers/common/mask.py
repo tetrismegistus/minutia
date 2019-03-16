@@ -8,7 +8,7 @@ class Mask:
     def __init__(self, grid_size: Rectangle):
         self.rows = grid_size.w
         self.cols = grid_size.h
-        self.bits = [[True for c in range(self.cols)] for r in range(self.rows)]
+        self.bits = [[None for c in range(self.cols)] for r in range(self.rows)]
 
     def __getitem__(self, tup):
         row, col = tup
@@ -69,3 +69,8 @@ class Mask:
                     mask[row, col] = True
 
         return mask
+
+
+class MultiStateMask(Mask):
+    def __init__(self):
+        pass
