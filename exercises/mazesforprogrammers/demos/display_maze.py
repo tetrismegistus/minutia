@@ -1,6 +1,7 @@
 from operator import itemgetter
 from collections import OrderedDict
 
+from common.downsample import downsample
 from common.grids import distance, grid, PassageHighlighted
 from common.Animation import Animation
 import common.runtimedefs as rundefs
@@ -144,3 +145,11 @@ def compare_dead_ends(grid_size: Rectangle = Rectangle(w=20, h=20), tries: int =
     for algorithm, average in sorted_averages.items():
         percentage = averages[algorithm] * 100.0 / (grid_size.w * grid_size.h)
         print("{} Average:\t {}/{}\tPercent: {}".format(algorithm, int(averages[algorithm]), total_cells, percentage))
+
+
+def blur_image(infile):
+    animation = Animation()
+    for x in range(1, 50):
+        animation.frames = downsample(infile, sample_rate=x, shrink=False)
+
+    animation.save_gif(reverse=True)
