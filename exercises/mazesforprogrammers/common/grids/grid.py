@@ -31,7 +31,7 @@ class Grid:
         return " "
 
     def background_color_for(self, cell):
-        return None
+        return (0, 0, 0, 0)
 
     def prepare_grid(self):
         return [[Cell(r, c) for c in range(self.columns)] for r in range(self.rows)]
@@ -66,14 +66,14 @@ class Grid:
         return [cell for cell in self.each_cell() if len(cell.links) == 1]
 
     def to_img(self, cell_size: Rectangle = Rectangle(w = 10, h = 10), backgrounds=True, walls=True,
-               background_color='#000000', wall_color='#FFFFFF'):
+               background_color=(0, 0, 0, 0), wall_color='#FFFFFF'):
         img_h = int(cell_size.h * self.columns)
         img_w = int(cell_size.w * self.rows)
         margin = 1
 
         background = background_color
         wall_color = wall_color
-        img = Image.new('RGB', (img_w + margin, img_h + margin), color=background)
+        img = Image.new('RGBA', (img_w + margin, img_h + margin), color=background)
         modes = []
         if backgrounds:
             modes.append('backgrounds')

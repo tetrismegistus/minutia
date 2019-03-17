@@ -1,13 +1,13 @@
 from operator import itemgetter
 from collections import OrderedDict
 
-from common.downsample import downsample
-from common.grids import distance, grid, PassageHighlighted
+from common.downsample import down_sample
+from common.grids import distance, grid, PassageHighlighted, masked_grid
 from common.Animation import Animation
 import common.runtimedefs as rundefs
 from common.grids.grid import Rectangle
 from algorithms.mazes import aldous_broder, binary_tree, hunt_and_kill, wilsons, sidewinder, recursive_backtracker
-
+from common.mask import Mask
 
 """
 animated gif notes:
@@ -32,6 +32,28 @@ def create_maze(grid_size, palette, cell_size, walls, grid, algo, animation, fil
         m.animation = animation
     else:
         animation = False
+
+    path_start = m.random_cell()
+    m.fill_distances(m[path_start.column, path_start.row])
+
+    m.to_img(cell_size=cell_size).save(rundefs.DIRS['output'] + filename, walls=walls)
+
+    if animation:
+        m.animation.save_gif()
+
+
+def mask_maze(mask_file, filename='maskmaze.png', cell_size=Rectangle(10, 10), animation=False, png=True, walls=True,
+              palette="winter", algo=rundefs.DEFAULTALGO):
+    mask = Mask.from_png(mask_file)
+    m = masked_grid.MaskedDistanceGrid(mask, walls=walls, palette=palette)
+
+    if animation:
+        animation = Animation()
+        m.animation = animation
+    else:
+        animation = False
+
+    algo(m)
 
     path_start = m.random_cell()
     m.fill_distances(m[path_start.column, path_start.row])
@@ -150,6 +172,6 @@ def compare_dead_ends(grid_size: Rectangle = Rectangle(w=20, h=20), tries: int =
 def blur_image(infile):
     animation = Animation()
     for x in range(1, 50):
-        animation.frames = downsample(infile, sample_rate=x, shrink=False)
+        animation.frames = down_sample(infile, sample_rate=x, shrink=False)
 
     animation.save_gif(reverse=True)

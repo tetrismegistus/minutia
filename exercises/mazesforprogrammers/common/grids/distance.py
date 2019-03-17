@@ -83,4 +83,3 @@ class DepthFirstSearch(DistanceGrid):
                 distances[neighbor] = distances[current] + 1
                 stack.append(neighbor)
                 self.distances = distances
-
