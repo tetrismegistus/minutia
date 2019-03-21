@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=C:\Users\maddu\Desktop\obey_the_goat\virtualenv"
+set "VIRTUAL_ENV=C:\Users\amaddux\Desktop\git\minutia\minutia\exercises\obey_the_goat\virtualenv"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

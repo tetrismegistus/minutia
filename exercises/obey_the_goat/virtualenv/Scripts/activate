@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\maddu\Desktop\obey_the_goat\virtualenv"
+VIRTUAL_ENV="C:\Users\amaddux\Desktop\git\minutia\minutia\exercises\obey_the_goat\virtualenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

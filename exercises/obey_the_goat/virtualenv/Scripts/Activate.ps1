@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\maddu\Desktop\obey_the_goat\virtualenv"
+$env:VIRTUAL_ENV="C:\Users\amaddux\Desktop\git\minutia\minutia\exercises\obey_the_goat\virtualenv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name
