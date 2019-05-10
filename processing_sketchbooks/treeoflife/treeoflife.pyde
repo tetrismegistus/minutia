@@ -58,8 +58,7 @@ def draw():
     
     paths.append(Path(severity[0].x, severity[0].y, tiph.x, tiph.y))
     paths.append(Path(mercy[0].x, chokmah.y, tiph.x, tiph.y))
-                 
-        
+
     for p in paths:
         line(p.x1, p.y1, p.x2, p.y2)
                     
