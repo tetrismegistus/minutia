@@ -21,7 +21,7 @@ class Bitmap:
 
     def create_dib_header(self):
         dib_size = b'\x28\x00\x00\x00'
-        width_of_bitmap = self.w.to_bytes(4,size = approximate_square_mult_4(), byteorder='little')
+        width_of_bitmap = self.w.to_bytes(4, byteorder='little')
         height_of_bitmap = int(int(len(self.pixel_array) / 3) / self.w)
         height_of_bitmap = height_of_bitmap.to_bytes(4, byteorder='little')
         planes = b'\x01\x00'              # 1 plane
