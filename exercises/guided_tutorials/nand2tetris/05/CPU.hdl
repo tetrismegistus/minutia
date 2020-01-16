@@ -1,0 +1,161 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/05/CPU.hdl
+
+/**
+ * The Hack CPU (Central Processing unit), consisting of an ALU,
+ * two registers named A and D, and a program counter named PC.
+ * The CPU is designed to fetch and execute instructions written in 
+ * the Hack machine language. In particular, functions as follows:
+ * Executes the inputted instruction according to the Hack machine 
+ * language specification. The D and A in the language specification
+ * refer to CPU-resident registers, while M refers to the external
+ * memory location addressed by A, i.e. to Memory[A]. The inM input 
+ * holds the value of this location. If the current instruction needs 
+ * to write a value to M, the value is placed in outM, the address 
+ * of the target location is placed in the addressM output, and the 
+ * writeM control bit is asserted. (When writeM==0, any value may 
+ * appear in outM). The outM and writeM outputs are combinational: 
+ * they are affected instantaneously by the execution of the current 
+ * instruction. The addressM and pc outputs are clocked: although they 
+ * are affected by the execution of the current instruction, they commit 
+ * to their new values only in the next time step. If reset==1 then the 
+ * CPU jumps to address 0 (i.e. pc is set to 0 in next time step) rather 
+ * than to the address resulting from executing the current instruction. 
+ */
+
+CHIP CPU {
+
+    IN  inM[16],         // M value input  (M = contents of RAM[A])
+        instruction[16], // Instruction for execution
+        reset;           // Signals whether to re-start the current
+                         // program (reset==1) or continue executing
+                         // the current program (reset==0).
+
+    OUT outM[16],        // M value output
+        writeM,          // Write to M? 
+        addressM[15],    // Address in data memory (of M)
+        pc[15];          // address of next instruction
+
+    PARTS:
+    Mux16(a=instruction, b=aluout, sel=instruction[15] , out=ain);
+    Not(in=instruction[15], out=notAinstruction);
+    Or(a=notAinstruction, b=instruction[5], out=aload);
+    ARegister(in=ain, load=aload, out=aout, out[0..14]=addressM);
+    Mux16(a=aout, b=inM, sel=instruction[12], out=amout);
+    ALU(x=dout, y=amout, zx=instruction[11] , nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=aluout, out=outM, zr=zrout , ng=ngout);
+    And(a=instruction[4], b=instruction[15], out=dload);
+    DRegister(in=aluout, out=dout, load=dload); 
+    And(a=instruction[15], b=instruction[3], out=writeM);
+    PC(in=aout, load=loadbit, inc=incbit, reset=reset, out[0..14]=pc);
+    
+    // Deep breath.  God forgive the following.
+
+    //////////////////////////////////////////////////////////////
+    // PC control bits    
+    //////////////////////////////////////////////////////////////
+    Not(in=instruction[2], out=notI2);
+    Not(in=instruction[1], out=notI1);
+    Not(in=instruction[0], out=notI0);
+    Not(in=zrout, out=notZR);
+    Not(in=ngout, out=notNG);
+
+    //////////////////////
+    // some useful sets // 
+    //////////////////////
+
+    // !ng !zr
+    And(a=notNG, b=notZR, out=notNGandnotZR);
+
+    // !ng zr
+    And(a=notNG, b=zrout, out=notNGandZR);
+
+    // ng !zr
+    And(a=ngout, b=notZR, out=NGandnotZR);
+
+    // ng zr
+    And(a=ngout, b=zrout, out=NGandZR);
+
+    // !I2 !I1 I0 = iset1
+    And(a=notI2, b=notI1, out=notI2andnotI1);
+    And(a=notI2andnotI1, b=instruction[0], out=iset1);
+
+    // !I2 I1 !I0 = iset2
+    And(a=notI2, b=instruction[1], out=notI2andI1);
+    And(a=notI2andI1, b=notI0, out=iset2);
+
+    // !I2 I1 I0 = iset3
+    And(a=notI2andI1, b=instruction[0], out=iset3);
+
+    // I2 !I1 !I0 = iset4
+    And(a=instruction[2], b=notI1, out=I2andnotI1);
+    And(a=I2andnotI1, b=notI0, out=iset4);
+
+    // I2 !I1 I0 = iset5
+    And(a=I2andnotI1, b=instruction[0], out=iset5);
+
+    // I2 I1 !I0 = iset6
+    And(a=instruction[2], b=instruction[1], out=I2andI1);
+    And(a=I2andI1, b=notI0, out= iset6);
+
+    // I2 I1 I0 = iset7
+    And(a=I2andI1, b=instruction[0], out=iset7);
+    
+    //////////////////////////////////
+    // canonical form, theoretically//
+    //////////////////////////////////
+    
+    // !i2 !i1 i0 !ng !zr
+    //   0   0  1   0   0
+    And(a=iset1, b=notNGandnotZR, out=c1);
+
+    // !i2 i1 !i0 !ng  zr
+    //   0  1   0   0   1
+    And(a=iset2, b=notNGandZR, out=c2);
+
+    // !I2 I1 I0 !ng !zr
+    //   0  1  1   0   0
+    And(a=iset3, b=notNGandnotZR, out=c3);
+
+    // !I2 I1 I0 !ng zr
+    //   0  1  1   0   1
+    And(a=iset3, b=notNGandZR, out=c4);
+
+    // I2 !I1 !I0 ng !zr
+    //  1   0   0  1   0
+    And(a=iset4, b=NGandnotZR, out=c5);
+
+    // I2 !I1 I0 !ng !zr
+    //  1   0  1   0   0 
+    And(a=iset5, b=notNGandnotZR, out=c6);
+
+    // I2 !I1 I0 ng !zr
+    //  1   0  1  1   0
+    And(a=iset5, b=NGandnotZR, out=c7);
+
+    // I2 I1 !I0 !ng zr
+    //  1  1   0   0  1
+    And(a=iset6, b=notNGandZR, out=c8);
+
+    // IT I1 !I0 ng !zr
+    //  1  1   0   1  0
+    And(a=iset6, b=NGandnotZR, out=c9);
+
+    Or(a=c1, b=c2, out=agg1);
+    Or(a=agg1, b=c3, out=agg2);
+    Or(a=agg2, b=c4, out=agg3);
+    Or(a=agg3, b=c5, out=agg4);
+    Or(a=agg4, b=c6, out=agg5);
+    Or(a=agg5, b=c7, out=agg6);
+    Or(a=agg6, b=c8, out=agg7);
+    Or(a=agg7, b=c9, out=agg8);
+    Or(a=agg8, b=iset7, out=agg9);
+
+    // ignore A instructions
+    And(a=agg9, b=instruction[15], out=loadbit);
+
+    // increment bit
+    Not(in=loadbit, out=incbit);
+    ///////////////////////////////////////////////////////////////////
+}

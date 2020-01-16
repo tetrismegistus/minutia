@@ -1,0 +1,13 @@
+CHIP ZOrN {
+    IN  
+        in[16], // 16-bit input        
+        z, // zero the input?
+        n; // negate the x input?
+    OUT 
+        out[16]; // 16-bit output
+
+    PARTS:
+    Mux16 (a=in, sel=z, out=zero);
+    Not16 (in=zero, out=notzero);  
+    Mux16 (a=zero, b=notzero, sel=n, out=out);
+}
