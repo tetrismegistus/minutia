@@ -15,9 +15,6 @@ from random import randint
 
 from PIL import Image
 
-#744,51 - 890,51
-#744,224 - 890,224
-
 class RGBShift:
     def __init__(self, filename, iterations=5, recursiveIterations=False, shiftVertically=False,
                  shiftHorizontally=True, boundary=None):
