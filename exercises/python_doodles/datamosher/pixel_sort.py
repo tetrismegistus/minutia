@@ -1,4 +1,5 @@
 import enum
+import argparse
 
 from PIL import Image, ImageDraw
 
@@ -11,7 +12,7 @@ class mode(enum.Enum):
 
 class PixelSort:
     def __init__(self, infile_name, mode, iterations=1, black_value=777216, brightness_value=60,
-                 white_value=3777216):
+                 white_value=3777216, columns=True, rows=True, boundary=None):
         # orig_white 3777216
         self.filename = infile_name
         self.img = Image.open(infile_name)
@@ -21,25 +22,29 @@ class PixelSort:
         self.white_value = white_value
         self.brightness_value = brightness_value
         self.w, self.h = self.img.size
+        self.columns = columns
+        self.rows = rows
+        self.boundary = boundary if boundary else (0, 0, self.w, self.h)
 
     def sort_pixels(self):
         for x in range(self.iterations):
             column = 0
             row = 0
+            if self.columns:
+                while column < self.w - 1:
+                    pixels = self.sort_column(column)
+                    column += 1
+                    self.img.putdata(pixels)
+                print('Columns finished')
 
-            while column < self.w - 1:
-                pixels = self.sort_column(column)
-                column += 1
-                self.img.putdata(pixels)
-            print('Column finished')
+            if self.rows:
+                while row < self.h - 1:
+                    pixels = self.sort_row(row)
+                    row += 1
+                    self.img.putdata(pixels)
+                print('Rows finished')
 
-            while row < self.h - 1:
-                pixels = self.sort_row(row)
-                row += 1
-                self.img.putdata(pixels)
-            print('Row finished')
-
-        self.img.save('SORTED' + self.filename)
+        self.img.save('SORTED.png')
 
     def sort_row(self, row):
         y = row
@@ -215,10 +220,40 @@ def rgb2int(r, g, b, a=None):
     return int('{:02x}{:02x}{:02x}'.format(r, g, b), 16)
 
 
-def main():
-    ps = PixelSort('gorey.jpg', mode.BLACK, iterations=1)
+def add_bool_arg(parser, name, default=False):
+    group = parser.add_mutually_exclusive_group(required=False)
+    group.add_argument('--' + name, dest=name, action='store_true')
+    group.add_argument('--no-' + name, dest=name, action='store_false')
+
+    parser.set_defaults(**{name: default})
+
+
+def main(args):
+
+    modes = {'black': mode.BLACK,
+             'white': mode.WHITE,
+             'brightness': mode.BRIGHTNESS}
+
+    m = modes[args.mode]
+    ps = PixelSort(args.file, m, white_value=args.w,  black_value=args.b, iterations=args.i,
+                   rows=args.rows, columns=args.cols)
     ps.sort_pixels()
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    # Required positional argument
+    parser.add_argument("file", help="Filename to process")
+    parser.add_argument("-i", help="Number of iterations", type=int, nargs='?', default=1)
+    parser.add_argument("-w", help="white value", type=int, default=3777216)
+    parser.add_argument("-b", help="black value", type=int, default=777216)
+    parser.add_argument("--mode", help="black, white, brightness", type=str, default='w')
+    parser.add_argument('--boundary', nargs=4, type=int, default=None)
+    add_bool_arg(parser, 'rows')
+    add_bool_arg(parser, 'cols')
+    parser.set_defaults(rows=False)
+    parser.set_defaults(columns=True)
+
+    arguments = parser.parse_args()
+    main(arguments)
