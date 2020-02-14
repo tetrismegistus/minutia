@@ -1,6 +1,8 @@
 import enum
 import argparse
 
+import numpy as np
+
 from PIL import Image, ImageDraw
 
 
@@ -28,19 +30,15 @@ class PixelSort:
 
     def sort_pixels(self):
         for x in range(self.iterations):
-            column = 0
-            row = 0
             if self.columns:
-                while column < self.w - 1:
+                for column in range(self.boundary[0], self.boundary[2]):
                     pixels = self.sort_column(column)
-                    column += 1
                     self.img.putdata(pixels)
                 print('Columns finished')
 
             if self.rows:
-                while row < self.h - 1:
+                for row in range(self.boundary[1], self.boundary[3]):
                     pixels = self.sort_row(row)
-                    row += 1
                     self.img.putdata(pixels)
                 print('Rows finished')
 
@@ -48,11 +46,11 @@ class PixelSort:
 
     def sort_row(self, row):
         y = row
-        x = 0
+        x = self.boundary[0]
         xend = 0
-        pixels = list(self.img.getdata())
+        pixels = np.array(self.img.getdata())
 
-        while xend < self.w - 1:
+        while xend < self.boundary[2] - 1:
             if self.mode == mode.BLACK:
                 x = self.get_first_not_black_x(x, y, pixels)
                 xend = self.get_next_black_x(x, y, pixels)
@@ -82,11 +80,11 @@ class PixelSort:
 
     def sort_column(self, column):
         x = column
-        y = 0
+        y = self.boundary[1]
         yend = 0
-        pixels = list(self.img.getdata())
+        pixels = np.array(self.img.getdata())--
 
-        while yend < self.h - 1:
+        while yend < self.boundary[1] - 1:
             if self.mode == mode.BLACK:
                 y = self.get_first_not_black_y(x, y, pixels)
                 yend = self.get_next_black_y(x, y, pixels)
@@ -117,53 +115,53 @@ class PixelSort:
 
     def get_next_white_y(self, x, y, pixels):
         y += 1
-        if y < self.h:
+        if y < self.boundary[3]:
             while rgb2int(*pixels[x + y * self.w]) < self.white_value:
                 y += 1
-                if y >= self.h:
-                    return self.h - 1
+                if y >= self.boundary[3]:
+                    return self.boundary[3] - 1
         return y - 1
 
     def get_next_black_y(self, x, y, pixels):
         y += 1
-        if y < self.h:
+        if y < self.boundary[3]:
             while rgb2int(*pixels[x + y * self.w]) > self.black_value:
                 y += 1
-                if y >= self.h:
-                    return self.h - 1
+                if y >= self.boundary[3]:
+                    return self.boundary[3] - 1
 
         return y - 1
 
     def get_first_not_white_y(self, x, y, pixels):
-        if y < self.h:
+        if y < self.boundary[3]:
             while rgb2int(*pixels[x + y * self.w]) > self.white_value:
                 y += 1
-                if y >= self.h:
+                if y >= self.boundary[3]:
                     return -1
         return y
 
     def get_first_not_black_y(self, x, y, pixels):
-        if y < self.h:
+        if y < self.boundary[3]:
             while rgb2int(*pixels[x + y * self.w]) < self.black_value:
                 y += 1
-                if y >= self.h:
+                if y >= self.boundary[3]:
                     return -1
         return y
 
     def get_next_dark_y(self, x, y, pixels):
         y += 1
-        if y < self.h:
+        if y < self.boundary[3]:
             while self.brightness(pixels[x + y * self.w]) > self.brightness_value:
                 y += 1
-                if y >= self.h:
-                    return self.h -1
+                if y >= self.boundary[3]:
+                    return self.boundary[3] - 1
         return y - 1
 
     def get_first_bright_y(self, x, y, pixels):
-        if y < self.h:
+        if y < self.boundary[3]:
             while self.brightness(pixels[x + y * self.w]) < self.brightness_value:
                 y += 1
-                if y >= self.h:
+                if y >= self.boundary[3]:
                     return -1
         return y
 
@@ -171,14 +169,14 @@ class PixelSort:
         x += 1
         while rgb2int(*pixels[x + y * self.w]) < self.white_value:
             x += 1
-            if x >= self.w:
-                return self.w - 1
+            if x >= self.boundary[2]:
+                return self.boundary[2] - 1
         return x - 1
 
     def get_first_not_white_x(self, x, y, pixels):
         while rgb2int(*pixels[x + y * self.w]) > self.white_value:
             x += 1
-            if x >= self.w:
+            if x >= self.boundary[2]:
                 return -1
         return x
 
@@ -186,14 +184,14 @@ class PixelSort:
         x += 1
         while self.brightness(pixels[x + y * self.w]) > self.brightness_value:
             x += 1
-            if x >= self.w:
-                return self.w - 1
+            if x >= self.boundary[2]:
+                return self.boundary[2] - 1
         return x - 1
 
     def get_first_bright_x(self, x, y, pixels):
         while self.brightness(pixels[x + y * self.w]) < self.brightness_value:
             x += 1
-            if x >= self.w:
+            if x >= self.boundary[2]:
                 return -1
         return x
 
@@ -201,19 +199,19 @@ class PixelSort:
         x += 1
         while rgb2int(*pixels[x + y * self.w]) > self.black_value:
             x += 1
-            if x >= self.w:
-                return self.w - 1
+            if x >= self.boundary[2]:
+                return self.boundary[2] - 1
         return x
 
     def get_first_not_black_x(self, x, y, pixels):
         while rgb2int(*pixels[x + y * self.w]) < self.black_value:
             x += 1
-            if x >= self.w:
+            if x >= self.boundary[2]:
                 return -1
         return x
 
-    def brightness(self, pixels):
-        return 1
+    def brightness(self, pixel):
+        return max(pixel[0], pixel[1], pixel[2])
 
 
 def rgb2int(r, g, b, a=None):
@@ -229,14 +227,14 @@ def add_bool_arg(parser, name, default=False):
 
 
 def main(args):
+    modes = {"bright": mode.BRIGHTNESS,
+             "black": mode.BLACK,
+             "white": mode.WHITE}
+    arg_mode = modes[args.mode]
 
-    modes = {'black': mode.BLACK,
-             'white': mode.WHITE,
-             'brightness': mode.BRIGHTNESS}
-
-    m = modes[args.mode]
-    ps = PixelSort(args.file, m, white_value=args.w,  black_value=args.b, iterations=args.i,
-                   rows=args.rows, columns=args.cols)
+    ps = PixelSort(args.file, arg_mode, white_value=args.w,  black_value=args.b,
+                   brightness_value=args.br, iterations=args.i, rows=args.rows, columns=args.columns,
+                   boundary=args.boundary)
     ps.sort_pixels()
 
 
@@ -248,12 +246,13 @@ if __name__ == "__main__":
     parser.add_argument("-i", help="Number of iterations", type=int, nargs='?', default=1)
     parser.add_argument("-w", help="white value", type=int, default=3777216)
     parser.add_argument("-b", help="black value", type=int, default=777216)
-    parser.add_argument("--mode", help="black, white, brightness", type=str, default='w')
+    parser.add_argument("-br", help="brightness value", type=int, default=60)
+    parser.add_argument("--mode", help="sort mode, [black], [white], [bright]", type=str, default="bright")
     parser.add_argument('--boundary', nargs=4, type=int, default=None)
     add_bool_arg(parser, 'rows')
-    add_bool_arg(parser, 'cols')
-    parser.set_defaults(rows=False)
-    parser.set_defaults(columns=True)
+    add_bool_arg(parser, 'columns')
+    parser.set_defaults(rows=True)
+    parser.set_defaults(columns=False)
 
     arguments = parser.parse_args()
     main(arguments)
