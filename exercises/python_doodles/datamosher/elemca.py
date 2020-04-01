@@ -1,8 +1,8 @@
 from PIL import Image, ImageDraw
 from random import choice
 import seaborn as sns
-
-from animation import Animation
+import numpy as np
+import imageio
 
 
 class elemCa:
@@ -13,9 +13,9 @@ class elemCa:
         self.imw = imw
         self.imh = imh
         self.palette = palette
-        self.ca_img = Image.new('RGB', (imw, imh), color=bg)
-        self.drawing = ImageDraw.Draw(self.ca_img)
         self.w = 2
+        self.ca_img = Image.new('RGB', (imw * self.w, self.w * imh), color=bg)
+        self.drawing = ImageDraw.Draw(self.ca_img)
         self.rows = imh
         self.cols = imw
         self.cells = []
@@ -55,16 +55,13 @@ class elemCa:
                     f = self.fg
                 else:
                     f = self.bg
-                x = j * self.w - (self.cols * self.w - self.imw) / 2
+                x = j * self.w
                 y = self.w * i
 
                 bbox = [x, y, x + self.w, y + self.w]
                 self.drawing.rectangle(bbox, f)
             if self.animation is not None:
-                self.animation.frames = self.ca_img.copy()
-
-        if self.animation is not None:
-            self.animation.save_gif()
+                self.animation.append_data(np.asarray(self.ca_img.copy()))
 
         if self.filename is not None:
             self.ca_img.save(self.filename)
@@ -75,4 +72,4 @@ p = sns.color_palette("coolwarm", 500)
 p = [tuple([int(i * 255) for i in j]) for j in p]
 
 elemCa(rule, f'{rule}.png', (255, 255, 255), (0, 0, 0), imw=500, imh=500,
-       animation=Animation(f'{rule}.gif', duration=.0001), palette=p)
+       animation=imageio.get_writer('animation.mp4', fps=75), palette=p)
