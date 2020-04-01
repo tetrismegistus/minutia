@@ -4,8 +4,7 @@ import random
 import numpy as np
 from PIL import Image
 from scipy.ndimage import convolve
-
-from animation import Animation
+import imageio
 
 
 class State(Enum):
@@ -27,19 +26,19 @@ class Cell:
     def __init__(self, x, y, state):
         self.x = x
         self.y = y
-        self.fetidness = 8
+        self.fetidness = len(self.SCALE) - 1
         self.state = state
 
     @property
     def color(self):
         if self.state == State.ALIVE:
-            return 255, 0, 0
+            return 120, 112, 11
         else:
             return Cell.SCALE[self.fetidness]
 
     def decay(self):
         if self.fetidness > 0:
-            self.fetidness = (self.fetidness - 1) % len(self.SCALE)
+            self.fetidness = self.fetidness - 1
 
 
 class Universe:
@@ -76,7 +75,7 @@ def conwayize(img_array, universe):
             if rule1 or rule2:
                 img_copy[idx][idy] = 1
                 universe.cell_matrix[idx][idy].state = State.ALIVE
-                universe.cell_matrix[idx][idy].fetidness = 8
+                universe.cell_matrix[idx][idy].fetidness = len(Cell.SCALE) - 1
             else:
                 img_copy[idx][idy] = 0
                 if universe.cell_matrix[idx][idy].state == State.DEAD:
@@ -94,15 +93,41 @@ def main():
     image_pil_conv = pil_img.convert('1', dither=Image.FLOYDSTEINBERG)
     one_bit_array = np.asarray(image_pil_conv, dtype=np.int8)
     universe = Universe(image_pil_conv.width, image_pil_conv.height)
-    iterations = 500
-    gif = Animation('drump.gif', duration=.25)
-    gif.frames = pil_img
-    gif.frames = image_pil_conv
+    iterations = 1000
+    mp4 = imageio.get_writer('agent_orange.mp4', fps=75)
+
+    for _ in range(25):
+        mp4.append_data(np.asarray(pil_img))    # display the first image for longer
+
+    image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
+    for _ in range(25):
+        mp4.append_data(np.asarray(image_pil_conv))    # display the first image for longer
+
+    image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
+    for _ in range(25):
+        mp4.append_data(np.asarray(image_pil_conv))  # display the first image for longer
+
+    image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
+    for _ in range(25):
+        mp4.append_data(np.asarray(image_pil_conv))  # display the first image for longer
+
+    image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
+    for _ in range(25):
+        mp4.append_data(np.asarray(image_pil_conv))  # display the first image for longer
+
+    image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
+    for _ in range(25):
+        mp4.append_data(np.asarray(image_pil_conv))  # display the first image for longer
+
+    image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
+    for _ in range(25):
+        mp4.append_data(np.asarray(image_pil_conv))  # display the first image for longer
+
     for x in range(iterations):
         image_pil_conv, one_bit_array = conwayize(one_bit_array, universe)
-        gif.frames = image_pil_conv
+        mp4.append_data(np.asarray(image_pil_conv))
 
-    gif.save_gif()
+    mp4.close()
 
 
 if __name__ == '__main__':
