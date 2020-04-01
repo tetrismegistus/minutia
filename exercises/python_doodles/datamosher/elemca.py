@@ -1,16 +1,18 @@
 from PIL import Image, ImageDraw
 from random import choice
+import seaborn as sns
 
 from animation import Animation
 
 
 class elemCa:
-    def __init__(self, ruleset=30, filename=None, bg=(96, 167, 169), fg=(255, 255, 255), imw=200, imh=200,
-                 animation=None):
+    def __init__(self, ruleset=30, filename=None, bg=(255, 255, 255), fg=(255, 255, 255), imw=200, imh=200,
+                 animation=None, palette=None):
         self.bg = bg
         self.fg = fg
         self.imw = imw
         self.imh = imh
+        self.palette = palette
         self.ca_img = Image.new('RGB', (imw, imh), color=bg)
         self.drawing = ImageDraw.Draw(self.ca_img)
         self.w = 2
@@ -27,7 +29,6 @@ class elemCa:
         return self.ruleset[7 - (4 * a + 2 * b + c)]
 
     def generate(self):
-
         for r in range(self.rows):
             self.cells.append([])
             for c in range(self.cols):
@@ -44,7 +45,11 @@ class elemCa:
                     self.cells[i + 1][j] = self.rules(left, me, right)
 
     def draw(self):
+        pindex = 0
         for i, cell in enumerate(self.cells):
+            if self.palette is not None:
+                self.fg = self.palette[pindex]
+                pindex += 1
             for j, v in enumerate(cell):
                 if v == 1:
                     f = self.fg
@@ -66,5 +71,8 @@ class elemCa:
 
 
 rule = 225
-elemCa(rule, f'{rule}.png', (255, 128, 255), (0, 0, 0), imw=500, imh=500,
-       animation=Animation(f'{rule}.gif', duration=.0001))
+p = sns.color_palette("coolwarm", 500)
+p = [tuple([int(i * 255) for i in j]) for j in p]
+
+elemCa(rule, f'{rule}.png', (255, 255, 255), (0, 0, 0), imw=500, imh=500,
+       animation=Animation(f'{rule}.gif', duration=.0001), palette=p)
