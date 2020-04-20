@@ -8,8 +8,9 @@ rangex = xmax - xmin
 rangey = ymax - ymin
 x_key = [0 for i in range(rangex / 2)]
 y_key = [0 for i in range(rangey / 2)]
-print(x_key)
-print(y_key)
+board = [[random.randint(0, 1) for x in x_key] for y in y_key]
+
+name = 0
 
 def block_zero(x, y):
     arc(x, y, xedge, yedge, 0, HALF_PI)
@@ -48,31 +49,31 @@ def setup():
     yscl = height / rangey
     xedge = xscl * 2
     yedge = yscl * 2
-    tiles = {0: block_zero,
-         1: block_one,
-         2: block_two,
-         3: block_three}
+    tiles = [block_zero,         
+             block_three]
         
 def draw():    
-    global xscl, yscl, x_key, y_key
-    background(0)
-    noFill()
-    stroke(0, 0, 255)
+    global xscl, yscl, x_key, y_key, name
     
+    
+    background(100, 100, 100)
     for y in range(0, height, yedge):        
         for x in range(0, width, xedge):
-            yidx = y_key[y / yedge]
-            xidx = x_key[x / xedge]
-            block_index = int('{}{}'.format(yidx, xidx), 2)            
-            tiles[block_index](x, y)                
+            
     
-    if mousePressed and mouseButton == LEFT:
-        current_int = int(''.join([str(x) for x in x_key]), 2) + 1
-        x_key =[int(x) for x in list('{:010b}'.format(current_int))]
-        print(x_key)
-        delay(100)
-        
-    if mousePressed and mouseButton == RIGHT:
-        current_int = int(''.join([str(y) for y in y_key]), 2) + 1
-        y_key =[int(y) for y in list('{:010b}'.format(current_int))]
-        delay(100)
+            fill(x % 255, y % 255, 100)
+            stroke(200, x % 255, y % 255)
+            tiles[board[x / xedge][y / yedge]](x, y)            
+    #save("images/{0:04d}.png".format(name))
+    ydx = random.randint(0, len(board) - 1)
+    xdx = random.randint(0, len(board[0]) - 1)
+    
+    if board[ydx][xdx] == 0:
+        board[ydx][xdx] = 1
+    else:
+        board[ydx][xdx] = 0
+         
+    name += 1
+    
+    
+            
