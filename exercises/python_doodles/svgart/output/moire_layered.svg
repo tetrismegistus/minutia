@@ -1,0 +1,1242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="8.5in"
+   version="1.1"
+   width="11in"
+   id="svg120"
+   sodipodi:docname="moire_layered.svg"
+   style="fill:none;stroke:#000000"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata124">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1027"
+     id="namedview122"
+     showgrid="false"
+     units="in"
+     inkscape:zoom="1.1210937"
+     inkscape:cx="457.62528"
+     inkscape:cy="376.75414"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="1-ellipsex"
+     style="display:inline">
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="295"
+       ry="285"
+       id="ellipse1232" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="290"
+       ry="280"
+       id="ellipse1230" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="285"
+       ry="275"
+       id="ellipse1228" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="280"
+       ry="270"
+       id="ellipse1226" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="275"
+       ry="265"
+       id="ellipse1224" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="270"
+       ry="260"
+       id="ellipse1222" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="265"
+       ry="255"
+       id="ellipse1220" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="260"
+       ry="250"
+       id="ellipse1218" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="255"
+       ry="245"
+       id="ellipse1216" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="250"
+       ry="240"
+       id="ellipse1214" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="245"
+       ry="235"
+       id="ellipse1212" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="240"
+       ry="230"
+       id="ellipse1210" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="235"
+       ry="225"
+       id="ellipse1208" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="230"
+       ry="220"
+       id="ellipse1206" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="225"
+       ry="215"
+       id="ellipse1204" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="220"
+       ry="210"
+       id="ellipse1202" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="215"
+       ry="205"
+       id="ellipse1200" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="210"
+       ry="200"
+       id="ellipse1198" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="205"
+       ry="195"
+       id="ellipse1196" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="200"
+       ry="190"
+       id="ellipse1194" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="195"
+       ry="185"
+       id="ellipse1192" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="190"
+       ry="180"
+       id="ellipse1190" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="185"
+       ry="175"
+       id="ellipse1188" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="180"
+       ry="170"
+       id="ellipse1186" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="175"
+       ry="165"
+       id="ellipse1184" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="170"
+       ry="160"
+       id="ellipse1182" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="165"
+       ry="155"
+       id="ellipse1180" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="160"
+       ry="150"
+       id="ellipse1178" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="155"
+       ry="145"
+       id="ellipse1176" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="150"
+       ry="140"
+       id="ellipse1174" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="145"
+       ry="135"
+       id="ellipse1172" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="140"
+       ry="130"
+       id="ellipse1170" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="135"
+       ry="125"
+       id="ellipse1168" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="130"
+       ry="120"
+       id="ellipse1166" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="125"
+       ry="115"
+       id="ellipse1164" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="120"
+       ry="110"
+       id="ellipse1162" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="115"
+       ry="105"
+       id="ellipse1160" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="110"
+       ry="100"
+       id="ellipse1158" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="105"
+       ry="95"
+       id="ellipse1156" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="100"
+       ry="90"
+       id="ellipse1154" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="95"
+       ry="85"
+       id="ellipse1152" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="90"
+       ry="80"
+       id="ellipse1150" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="85"
+       ry="75"
+       id="ellipse1148" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="80"
+       ry="70"
+       id="ellipse1146" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="75"
+       ry="65"
+       id="ellipse1144" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="70"
+       ry="60"
+       id="ellipse1142" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="65"
+       ry="55"
+       id="ellipse1140" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="60"
+       ry="50"
+       id="ellipse1138" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="55"
+       ry="45"
+       id="ellipse1136" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="50"
+       ry="40"
+       id="ellipse1134" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="45"
+       ry="35"
+       id="ellipse1132" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="40"
+       ry="30"
+       id="ellipse1130" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="35"
+       ry="25"
+       id="ellipse1128" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="30"
+       ry="20"
+       id="ellipse1126" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="25"
+       ry="15"
+       id="ellipse1124" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="20"
+       ry="10"
+       id="ellipse1122" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="15"
+       ry="5"
+       id="ellipse1120" />
+    <ellipse
+       transform="translate(16,24)"
+       cx="512"
+       cy="384"
+       rx="10"
+       ry="0"
+       id="ellipse1118" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="0-circle"
+     style="display:inline">
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse4"
+       r="10" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse6"
+       r="15" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse8"
+       r="20" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse10"
+       r="25" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse12"
+       r="30" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse14"
+       r="35" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse16"
+       r="40" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse18"
+       r="45" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse20"
+       r="50" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse22"
+       r="55" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse24"
+       r="60" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse26"
+       r="65" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse28"
+       r="70" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse30"
+       r="75" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse32"
+       r="80" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse34"
+       r="85" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse36"
+       r="90" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse38"
+       r="95" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse40"
+       r="100" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse42"
+       r="105" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse44"
+       r="110" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse46"
+       r="115" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse48"
+       r="120" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse50"
+       r="125" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse52"
+       r="130" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse54"
+       r="135" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse56"
+       r="140" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse58"
+       r="145" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse60"
+       r="150" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse62"
+       r="155" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse64"
+       r="160" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse66"
+       r="165" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse68"
+       r="170" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse70"
+       r="175" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse72"
+       r="180" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse74"
+       r="185" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse76"
+       r="190" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse78"
+       r="195" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse80"
+       r="200" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse82"
+       r="205" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse84"
+       r="210" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse86"
+       r="215" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse88"
+       r="220" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse90"
+       r="225" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse92"
+       r="230" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse94"
+       r="235" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse96"
+       r="240" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse98"
+       r="245" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse100"
+       r="250" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse102"
+       r="255" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse104"
+       r="260" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse106"
+       r="265" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse108"
+       r="270" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse110"
+       r="275" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse112"
+       r="280" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse114"
+       r="285" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse116"
+       r="290" />
+    <circle
+       transform="translate(16,-24)"
+       cx="512"
+       cy="432"
+       id="ellipse118"
+       r="295" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="2-ellipsey"
+     style="display:inline">
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="285"
+       ry="295"
+       id="ellipse2469" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="280"
+       ry="290"
+       id="ellipse2467" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="275"
+       ry="285"
+       id="ellipse2465" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="270"
+       ry="280"
+       id="ellipse2463" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="265"
+       ry="275"
+       id="ellipse2461" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="260"
+       ry="270"
+       id="ellipse2459" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="255"
+       ry="265"
+       id="ellipse2457" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="250"
+       ry="260"
+       id="ellipse2455" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="245"
+       ry="255"
+       id="ellipse2453" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="240"
+       ry="250"
+       id="ellipse2451" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="235"
+       ry="245"
+       id="ellipse2449" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="230"
+       ry="240"
+       id="ellipse2447" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="225"
+       ry="235"
+       id="ellipse2445" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="220"
+       ry="230"
+       id="ellipse2443" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="215"
+       ry="225"
+       id="ellipse2441" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="210"
+       ry="220"
+       id="ellipse2439" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="205"
+       ry="215"
+       id="ellipse2437" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="200"
+       ry="210"
+       id="ellipse2435" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="195"
+       ry="205"
+       id="ellipse2433" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="190"
+       ry="200"
+       id="ellipse2431" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="185"
+       ry="195"
+       id="ellipse2429" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="180"
+       ry="190"
+       id="ellipse2427" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="175"
+       ry="185"
+       id="ellipse2425" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="170"
+       ry="180"
+       id="ellipse2423" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="165"
+       ry="175"
+       id="ellipse2421" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="160"
+       ry="170"
+       id="ellipse2419" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="155"
+       ry="165"
+       id="ellipse2417" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="150"
+       ry="160"
+       id="ellipse2415" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="145"
+       ry="155"
+       id="ellipse2413" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="140"
+       ry="150"
+       id="ellipse2411" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="135"
+       ry="145"
+       id="ellipse2409" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="130"
+       ry="140"
+       id="ellipse2407" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="125"
+       ry="135"
+       id="ellipse2405" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="120"
+       ry="130"
+       id="ellipse2403" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="115"
+       ry="125"
+       id="ellipse2401" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="110"
+       ry="120"
+       id="ellipse2399" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="105"
+       ry="115"
+       id="ellipse2397" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="100"
+       ry="110"
+       id="ellipse2395" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="95"
+       ry="105"
+       id="ellipse2393" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="90"
+       ry="100"
+       id="ellipse2391" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="85"
+       ry="95"
+       id="ellipse2389" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="80"
+       ry="90"
+       id="ellipse2387" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="75"
+       ry="85"
+       id="ellipse2385" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="70"
+       ry="80"
+       id="ellipse2383" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="65"
+       ry="75"
+       id="ellipse2381" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="60"
+       ry="70"
+       id="ellipse2379" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="55"
+       ry="65"
+       id="ellipse2377" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="50"
+       ry="60"
+       id="ellipse2375" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="45"
+       ry="55"
+       id="ellipse2373" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="40"
+       ry="50"
+       id="ellipse2371" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="35"
+       ry="45"
+       id="ellipse2369" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="30"
+       ry="40"
+       id="ellipse2367" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="25"
+       ry="35"
+       id="ellipse2365" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="20"
+       ry="30"
+       id="ellipse2363" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="15"
+       ry="25"
+       id="ellipse2361" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="10"
+       ry="20"
+       id="ellipse2359" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="5"
+       ry="15"
+       id="ellipse2357" />
+    <ellipse
+       transform="matrix(1.000000,0.000000,0.000000,1.000000,16.000000,24.000000)"
+       cx="512"
+       cy="384"
+       rx="0"
+       ry="10"
+       id="ellipse2355" />
+  </g>
+  <WCB
+     application="Axidraw"
+     row="0"
+     randseed="1594393188.7"
+     pausedposy="4.95472440945"
+     pausedposx="8.38976377953"
+     lastknownposy="1.18099800772e-12"
+     lastknownposx="2.439787955e-12"
+     lastpathnc="0"
+     lastpath="0"
+     node="241"
+     layer="2" />
+</svg>
