@@ -1,0 +1,80 @@
+- scott needs to transfer to digital ocean
+- host different domain names
+- have php
+- standard linux env
+- find open source site provisioning software
+	- needs to be current
+	- run multiple php websites off a virtual host
+	- fill out a form with domain name, and org name, and it will build a virtual host and  build a database and assign it to that application
+	- 2 hours of my time
+	- build apache
+	- give us ssh keys
+- cloudpanel
+	- 2.5.1 March 3rd
+	- https://github.com/cloudpanel-io/cloudpanel-ce
+	- demo: https://demo.cloudpanel.io/
+	- Digital ocean install: https://www.cloudpanel.io/docs/v2/getting-started/digital-ocean/installation/marketplace/
+	- Features
+		- **Free**
+		- **Easy to use**
+		- **Community Driven**
+		- **Blazing Fast Page Loads - Up to 250x faster**
+		- **Secure (free SSL/TLS certificates)**
+		- **Cloudflare integration**
+		- **High Performance**
+		- **Ready to go within 1 minute**
+		- **Supports all major clouds**
+		- **Ubuntu 24.04 and 22.04, Debian 12 and 11 Support**
+		- **Support for X86 and ARM**
+- Virtualmin
+	- https://github.com/virtualmin/virtualmin-gpl
+	- Virtualmin web hosting control panel for webmin
+	- commercial version and GPL version
+	- features
+		- Web server virtual host configuration (VirtualHost in Apache)
+		- Let's Encrypt! SSL certificate support
+		- Mailboxes with spam and AV scanning using Postfix, Sendmail, or QMail (Postfix recommended)
+		- Webmail (our own Usermin, RoundCube, and others)
+		- Database management (MySQL, MariaDB, PostgreSQL, with optional modules for SQLite and Oracle)
+		- FTP/ssh users
+		- Web application installation and upgrades (more applications available in Virtualmin Pro)
+		- PHP configuration and multiple version support (including PHP7 and PHP8)
+		- PHP-FPM and mod_fcgid execution modes, with suexec
+		- Ruby Gems, PHP Pear, and Perl CPAN package installation
+		- System analytics
+		- Log analysis
+		- Domain backup and restoration
+		- Easy import of cPanel, Plesk, and DirectAdmin domain backups
+		- Modern, friendly, responsive, and beautiful web UI, with many color schemes and options
+		- Comprehensive CLI and remote API
+		- Powerful HTML5/JS file manager
+		- Tons of plugins
+		- Big community of users (over 100,000 active installations)
+		- Based on Webmin! (over a million installations worldwide!)
+	- 7.30.8 released march 20th
+- Hestia Control Panel
+	- https://github.com/hestiacp/hestiacp
+	- 1.9.3 Feb 27
+	- https://demo.hestiacp.com:8083/login/
+	- Hestia Control Panel is designed to provide administrators an easy to 
+	  use web and command line interface, enabling them to quickly deploy and   
+	  manage web domains, mail accounts, DNS zones, and databases from one   
+	  central dashboard without the hassle of manually deploying and   
+	  configuring individual components or services.  
+	- Features
+		- Apache2 and NGINX with PHP-FPM
+		- Multiple PHP versions (5.6 - 8.4, 8.3 as default)
+		- DNS Server (Bind) with clustering capabilities
+		- POP/IMAP/SMTP mail services with Anti-Virus, Anti-Spam, and Webmail (ClamAV, SpamAssassin, Sieve, Roundcube)
+		- MariaDB/MySQL and/or PostgreSQL databases
+		- Let's Encrypt SSL support with wildcard certificates
+		- Firewall with brute-force attack detection and IP lists (iptables, fail2ban, and ipset).
+	- UI looks pretty clean and intuitive
+- Froxlor
+	- https://github.com/Froxlor/Froxlor
+	- 2.2.6 March 11
+	- https://froxlor.org/explore/features
+	- https://demo.froxlor.org/admin_index.php
+- ISPConfig
+	- https://www.ispconfig.org/
+	- may meet the open source requirement but looks profit oriented (have to pay for manual etc), not on github, hard to look at source
