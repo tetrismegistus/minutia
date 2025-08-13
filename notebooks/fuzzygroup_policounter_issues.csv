@@ -1,0 +1,19 @@
+repo,id,title,assignees,labels,state,created_at,url
+fuzzygroup/policounter,35,change readme for project,[],[],open,2025-07-08T18:46:15Z,https://github.com/fuzzygroup/policounter/issues/35
+fuzzygroup/policounter,34,switch to post from get,[],[],open,2025-07-08T18:14:13Z,https://github.com/fuzzygroup/policounter/issues/34
+fuzzygroup/policounter,33,lock up communication to polly,[],[],open,2025-07-08T18:13:15Z,https://github.com/fuzzygroup/policounter/issues/33
+fuzzygroup/policounter,32,expose event fields to the UI,[],['enhancement'],open,2025-05-09T05:12:09Z,https://github.com/fuzzygroup/policounter/issues/32
+fuzzygroup/policounter,31,count should be integer,['tetrismegistus'],['bug'],open,2025-05-09T04:02:32Z,https://github.com/fuzzygroup/policounter/issues/31
+fuzzygroup/policounter,29,expose observation fields to UI,['tetrismegistus'],['enhancement'],open,2025-05-09T01:53:01Z,https://github.com/fuzzygroup/policounter/issues/29
+fuzzygroup/policounter,26,Get Policounter UI cleaned up -- OVERALL TICKET,['tetrismegistus'],[],open,2025-04-28T13:20:09Z,https://github.com/fuzzygroup/policounter/issues/26
+fuzzygroup/policounter,24,Write an essay about HOW TO MEASURE CROWDS for grass roots political activity,['tetrismegistus'],['documentation'],open,2025-04-25T17:48:25Z,https://github.com/fuzzygroup/policounter/issues/24
+fuzzygroup/policounter,23,DB backup,['tetrismegistus'],['enhancement'],open,2025-04-25T17:47:37Z,https://github.com/fuzzygroup/policounter/issues/23
+fuzzygroup/policounter,21,rebuild the architecture around a sharing model (using a share of 1 of 3 types per whiteboard discussion),['tetrismegistus'],['enhancement'],open,2025-04-25T17:46:20Z,https://github.com/fuzzygroup/policounter/issues/21
+fuzzygroup/policounter,20,Explain the Models,['tetrismegistus'],['documentation'],open,2025-04-25T17:39:58Z,https://github.com/fuzzygroup/policounter/issues/20
+fuzzygroup/policounter,17,Understand the rails api for DEVISE gem,['tetrismegistus'],['documentation'],open,2025-04-25T17:33:13Z,https://github.com/fuzzygroup/policounter/issues/17
+fuzzygroup/policounter,16,Generate a map view by day / over time or a density view or something that shows trending,['tetrismegistus'],['enhancement'],open,2025-04-25T17:22:53Z,https://github.com/fuzzygroup/policounter/issues/16
+fuzzygroup/policounter,15,Improve the language around the estimates so it is human readable,['tetrismegistus'],['enhancement'],open,2025-04-25T17:21:51Z,https://github.com/fuzzygroup/policounter/issues/15
+fuzzygroup/policounter,13,Need to be able to export a CSV,['tetrismegistus'],['enhancement'],open,2025-04-25T17:17:49Z,https://github.com/fuzzygroup/policounter/issues/13
+fuzzygroup/policounter,10,Need to extract location metadata from images,['tetrismegistus'],['enhancement'],open,2025-04-25T17:16:01Z,https://github.com/fuzzygroup/policounter/issues/10
+fuzzygroup/policounter,9,Need to support location based permalinks,['tetrismegistus'],['enhancement'],open,2025-04-25T17:15:37Z,https://github.com/fuzzygroup/policounter/issues/9
+fuzzygroup/policounter,5,Make it so images can't be crawled so easily,['tetrismegistus'],['enhancement'],open,2025-04-25T11:26:01Z,https://github.com/fuzzygroup/policounter/issues/5

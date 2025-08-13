@@ -1,0 +1,52 @@
+repo,id,title,assignees,labels,state,created_at,url
+fuzzygroup/polly,81,Not a bug but a suggestion,[],[],open,2025-07-18T22:06:44Z,https://github.com/fuzzygroup/polly/issues/81
+fuzzygroup/polly,78,Default the event state to be the current state where the user comes from based on a geocoding call,['tetrismegistus'],[],open,2025-07-15T16:44:41Z,https://github.com/fuzzygroup/polly/issues/78
+fuzzygroup/polly,76,Global code refactor as a learning tool for aric,['tetrismegistus'],['enhancement'],open,2025-07-03T08:57:08Z,https://github.com/fuzzygroup/polly/issues/76
+fuzzygroup/polly,73,Prevent the event attendance / event volunteer / event speaker application buttons from showing up IF THE USER ALREADY DID THEM,['tetrismegistus'],[],open,2025-06-26T09:13:46Z,https://github.com/fuzzygroup/polly/issues/73
+fuzzygroup/polly,72,I want you to write us a rake task which finds problems in our forms,['tetrismegistus'],[],open,2025-06-26T08:58:16Z,https://github.com/fuzzygroup/polly/issues/72
+fuzzygroup/polly,71,JavaScript capture to cookie in the event of a crash on editing text fields,['tetrismegistus'],[],open,2025-06-25T08:50:48Z,https://github.com/fuzzygroup/polly/issues/71
+fuzzygroup/polly,70,Work with Alisa to produce a better looking (yes that's fucking nebulous) Event Attendance form,['tetrismegistus'],[],open,2025-06-25T06:48:50Z,https://github.com/fuzzygroup/polly/issues/70
+fuzzygroup/polly,69,Get Merit Gem working and Get past the Observers issue,['tetrismegistus'],[],open,2025-06-24T08:03:00Z,https://github.com/fuzzygroup/polly/issues/69
+fuzzygroup/polly,68,Integrate Rails Admin into Polly in a Branch,['tetrismegistus'],[],open,2025-06-24T07:55:39Z,https://github.com/fuzzygroup/polly/issues/68
+fuzzygroup/polly,67,Figure out how people can add their own profile images to Polly,['tetrismegistus'],[],open,2025-06-24T07:50:04Z,https://github.com/fuzzygroup/polly/issues/67
+fuzzygroup/polly,66,The Robin Shackleford Organization Fuckery,['fuzzygroup'],[],open,2025-06-24T07:45:29Z,https://github.com/fuzzygroup/polly/issues/66
+fuzzygroup/polly,64,Protest Alert Feature,['tetrismegistus'],[],open,2025-06-23T17:24:24Z,https://github.com/fuzzygroup/polly/issues/64
+fuzzygroup/polly,63,Polly Videos,['tetrismegistus'],['enhancement'],open,2025-06-23T13:36:38Z,https://github.com/fuzzygroup/polly/issues/63
+fuzzygroup/polly,62,"external_accounts feature for keeping track of externally issued email, vpn, etc",['fuzzygroup'],[],open,2025-06-23T07:09:12Z,https://github.com/fuzzygroup/polly/issues/62
+fuzzygroup/polly,60,Search Enhancements,[],[],open,2025-06-19T14:31:35Z,https://github.com/fuzzygroup/polly/issues/60
+fuzzygroup/polly,57,JavaScript for setting height of textareas to be NOT FUCKING TINY,['tetrismegistus'],[],open,2025-06-16T10:20:54Z,https://github.com/fuzzygroup/polly/issues/57
+fuzzygroup/polly,56,sign slogan generator based on personal information for THE STRATEGY 2,['fuzzygroup'],[],open,2025-06-16T08:58:26Z,https://github.com/fuzzygroup/polly/issues/56
+fuzzygroup/polly,55,integrate speaker name to title for events,['fuzzygroup'],[],open,2025-06-13T19:57:03Z,https://github.com/fuzzygroup/polly/issues/55
+fuzzygroup/polly,54,Non Logged Interface for Polly is Find a Protest,[],[],open,2025-06-05T16:54:31Z,https://github.com/fuzzygroup/polly/issues/54
+fuzzygroup/polly,53,"Add ""good person for this location"" feature to offline promotion locations model",[],[],open,2025-06-05T12:30:04Z,https://github.com/fuzzygroup/polly/issues/53
+fuzzygroup/polly,52,Build a Press Mentions facility for tracking links to press stuff,[],[],open,2025-06-05T12:25:27Z,https://github.com/fuzzygroup/polly/issues/52
+fuzzygroup/polly,51,Build a documents facility for capturing things like Beckwith Questions,[],[],open,2025-06-05T09:45:06Z,https://github.com/fuzzygroup/polly/issues/51
+fuzzygroup/polly,50,Need a great print view to unify speaker and musician bios,[],[],open,2025-06-04T15:20:53Z,https://github.com/fuzzygroup/polly/issues/50
+fuzzygroup/polly,49,Add support for chat input like mail,[],[],open,2025-06-04T15:20:08Z,https://github.com/fuzzygroup/polly/issues/49
+fuzzygroup/polly,48,Implement a video gallery for shared video contribution,[],[],open,2025-06-04T15:19:39Z,https://github.com/fuzzygroup/polly/issues/48
+fuzzygroup/polly,47,Implement a photo gallery for group photo contributions,[],[],open,2025-06-04T15:19:13Z,https://github.com/fuzzygroup/polly/issues/47
+fuzzygroup/polly,46,Fix breadcrumb tracking to reflect nested resources,['tetrismegistus'],['enhancement'],open,2025-06-01T09:57:45Z,https://github.com/fuzzygroup/polly/issues/46
+fuzzygroup/polly,45,MONDAY: Implement support for Meilli Search in Polly,['tetrismegistus'],['enhancement'],open,2025-05-31T12:42:37Z,https://github.com/fuzzygroup/polly/issues/45
+fuzzygroup/polly,44,Add your count down timer to events on the events in the Polly software,['tetrismegistus'],['enhancement'],open,2025-05-31T12:41:00Z,https://github.com/fuzzygroup/polly/issues/44
+fuzzygroup/polly,35,SignalMessage object for creating the index of all chats,['fuzzygroup'],[],open,2025-05-19T07:51:48Z,https://github.com/fuzzygroup/polly/issues/35
+fuzzygroup/polly,34,MeetingNote object for sharing notes on meetings,['fuzzygroup'],[],open,2025-05-19T07:50:36Z,https://github.com/fuzzygroup/polly/issues/34
+fuzzygroup/polly,33,Attach a followup or a post mortem to any object. Like an event or something,['fuzzygroup'],[],open,2025-05-18T16:55:51Z,https://github.com/fuzzygroup/polly/issues/33
+fuzzygroup/polly,32,Attach generic media object,['fuzzygroup'],[],open,2025-05-18T16:35:42Z,https://github.com/fuzzygroup/polly/issues/32
+fuzzygroup/polly,31,Polymorphic Follow Up Object,['fuzzygroup'],[],open,2025-05-18T15:15:30Z,https://github.com/fuzzygroup/polly/issues/31
+fuzzygroup/polly,30,What is New Since Your Last Visit,['fuzzygroup'],[],open,2025-05-18T15:14:53Z,https://github.com/fuzzygroup/polly/issues/30
+fuzzygroup/polly,29,Polymorphic Post Mortem,['fuzzygroup'],[],open,2025-05-18T15:06:03Z,https://github.com/fuzzygroup/polly/issues/29
+fuzzygroup/polly,28,Polymorphorphic Meeting Notes,['fuzzygroup'],[],open,2025-05-18T15:05:40Z,https://github.com/fuzzygroup/polly/issues/28
+fuzzygroup/polly,22,Add a flag or text display to the event schedule that indicates that after a certain date you cannot request to be a speaker,['tetrismegistus'],[],open,2025-05-14T11:57:00Z,https://github.com/fuzzygroup/polly/issues/22
+fuzzygroup/polly,19,BUG: The http://localhost:3000/vetting_questions ask selected question feature doesn't work,['fuzzygroup'],['bug'],open,2025-05-05T11:25:05Z,https://github.com/fuzzygroup/polly/issues/19
+fuzzygroup/polly,17,Availabilities Model,[],[],open,2025-05-04T17:41:51Z,https://github.com/fuzzygroup/polly/issues/17
+fuzzygroup/polly,16,Presentation of Rules,[],[],open,2025-05-04T17:41:16Z,https://github.com/fuzzygroup/polly/issues/16
+fuzzygroup/polly,15,Write a memeorandum archiver and schedule it for 4x per day,[],[],open,2025-05-04T17:39:15Z,https://github.com/fuzzygroup/polly/issues/15
+fuzzygroup/polly,14,Get Polly deployed onto a DO box or Hetzner box,[],[],open,2025-04-28T13:22:05Z,https://github.com/fuzzygroup/polly/issues/14
+fuzzygroup/polly,13,Want to run an eventr,[],[],open,2025-04-26T16:45:59Z,https://github.com/fuzzygroup/polly/issues/13
+fuzzygroup/polly,12,Actions,[],[],open,2025-04-26T13:18:20Z,https://github.com/fuzzygroup/polly/issues/12
+fuzzygroup/polly,11,Need to easily track who is available for an event or a time span,[],[],open,2025-04-26T13:16:40Z,https://github.com/fuzzygroup/polly/issues/11
+fuzzygroup/polly,10,Implement Graphics Review via a Flier Object,[],[],open,2025-04-26T13:13:38Z,https://github.com/fuzzygroup/polly/issues/10
+fuzzygroup/polly,9,Figure out what has gone wrong with Vobject,[],[],open,2025-04-25T15:14:08Z,https://github.com/fuzzygroup/polly/issues/9
+fuzzygroup/polly,8,Implement User Badging,[],[],open,2025-04-25T15:11:16Z,https://github.com/fuzzygroup/polly/issues/8
+fuzzygroup/polly,7,Add in support for new Rails 8 Mail integration to allow capturing input from different emails sent to an org and clustering their results for analysis,[],[],open,2025-04-25T14:35:08Z,https://github.com/fuzzygroup/polly/issues/7
+fuzzygroup/polly,6,Current dev environment is broken due to deploy changes faking the environment into thinking its actually wrong,[],[],open,2025-04-25T01:47:19Z,https://github.com/fuzzygroup/polly/issues/6
